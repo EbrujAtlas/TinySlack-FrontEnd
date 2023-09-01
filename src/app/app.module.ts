@@ -8,6 +8,7 @@ import { ListChannelComponent } from './component/list-channel/list-channel.comp
 import { CreateChannelComponent } from './component/create-channel/create-channel.component';
 import { MessageComponent } from './component/message/message.component';
 import { CreateMessageComponent } from './component/create-message/create-message.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,13 +17,10 @@ import { CreateMessageComponent } from './component/create-message/create-messag
     ListChannelComponent,
     CreateChannelComponent,
     MessageComponent,
-    CreateMessageComponent
+    CreateMessageComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
