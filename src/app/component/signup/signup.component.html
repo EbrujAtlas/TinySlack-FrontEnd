@@ -1,12 +1,22 @@
 <h2>Inscription</h2>
 <form [formGroup]="signupForm" (submit)="onSubmit($event)">
   <div>
+    <label for="userName">Nom:</label>
+    <input type="userName" id="name" formControlName="userName">
+    <div *ngIf="signupForm.get('userName')?.hasError('required')">
+      Votre nom est requis.
+    </div>
+    <div *ngIf="signupForm.get('userName')?.hasError('maxlength')">
+      Votre nom doit faire moins de {{ signupForm.get('userName')?.errors?.['maxlength']?.requiredLength }} caractères.
+  </div>
+  </div>
+  <div>
     <label for="email">Email:</label>
-    <input type="email" id="email" formControlName="email">
-    <div *ngIf="signupForm.get('email')?.hasError('required')">
+    <input type="userMail" id="email" formControlName="userMail">
+    <div *ngIf="signupForm.get('userMail')?.hasError('required')">
       Email est requis.
     </div>
-    <div *ngIf="signupForm.get('email')?.hasError('email')">
+    <div *ngIf="signupForm.get('userMail')?.hasError('userMail')">
       Email invalide.
     </div>
   </div>

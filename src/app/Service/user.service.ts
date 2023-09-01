@@ -21,7 +21,7 @@ export class UserService {
   }
 
   addUser(user: Users): Observable<Users> {
-    return this.httpClient.post<Users>('', user);
+    return this.httpClient.post<Users>('http://localhost:8080/tinyslack/users', user);
   }
 
   //Authenfication
