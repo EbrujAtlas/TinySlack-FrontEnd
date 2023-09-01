@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Users } from 'src/app/Model/users';
 import { UserService } from 'src/app/Service/user.service';
@@ -16,6 +17,7 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
+    private route: Router
   ) {
     this.loginForm = this.fb.group({
       userMail: ['', Validators.required],
@@ -33,6 +35,7 @@ export class LoginComponent {
         if (user) {
           this.userService.login();
           this.userService.setCurrentUser(user);
+          this.route.navigate(['/profile']);
           console.log('Utilisateur connecté :', user);
         } else {
           console.log('Identifiants incorrects');

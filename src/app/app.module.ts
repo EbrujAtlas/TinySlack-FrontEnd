@@ -24,6 +24,6 @@ import { ProfileComponent } from './component/profile/profile.component';
     HttpClientModule
   ],
   providers: [],
-  bootstrap: [LoginComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
