@@ -8,13 +8,17 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
 import { SignupComponent } from './component/signup/signup.component';
 import { ProfileComponent } from './component/profile/profile.component';
+import { Error404Component } from './component/error404/error404.component';
+import { AboutComponent } from './component/about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
-    ProfileComponent
+    ProfileComponent,
+    Error404Component,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

@@ -28,6 +28,10 @@ export class UserService {
     return this.httpClient.delete<Users>('http://localhost:8080/tinyslack/users/' + userName);
   }
 
+  updateUser(userId: string, user: Users ): Observable<Users>  {
+    return this.httpClient.patch<Users>('http://localhost:8080/tinyslack/users/' + userId, user);
+  }
+
   //Authenfication
   login() {
     this.isLoggedIn = true;
@@ -49,8 +53,4 @@ export class UserService {
   getCurrentUser(): Users | null {
     return this.currentUser;
   }
-
-  updateUser(user: Users) {
-  }
-
 }
