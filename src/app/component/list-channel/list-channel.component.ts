@@ -15,7 +15,6 @@ export class ListChannelComponent {
     this.ch.getChannels().subscribe((data: any) => {
       // à chaque fois on va recevoir des donnees, on les mets dans notre tableau channels qui est de type CHannels( Model)
       this.channels = data;
-      console.log(this.channels);
     });
   }
 }

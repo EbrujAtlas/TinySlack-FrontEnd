@@ -1,5 +1,7 @@
-<h1>Nom de channel</h1>
+<h3>Nom de channel</h3>
 <div>description: nom createur:</div>
-<p><!--boucle pour afficher tous les messages liés à ce canal--></p>
-<app-message></app-message>
+<div *ngFor="let message of messagesFromChannel">
+  <app-message [msg]="message"></app-message>
+</div>
+
 <app-create-message></app-create-message>

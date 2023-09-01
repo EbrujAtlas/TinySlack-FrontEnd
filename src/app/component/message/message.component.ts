@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Messages } from 'src/app/Model/messages';
 import { MessageService } from 'src/app/Service/message.service';
 
@@ -9,21 +8,32 @@ import { MessageService } from 'src/app/Service/message.service';
   styleUrls: ['./message.component.css'],
 })
 export class MessageComponent {
-  message: Messages = {
-    messageId: '00000',
-    message: 'default',
+  @Input() msg: Messages = {
+    messageId: '',
+    message: '',
     messageDate: new Date(2000, 10, 10),
-    channelId: '1111',
-    userId: '010101',
+    channel: {
+      channelId: '',
+      channelName: '',
+      description: '',
+      protection: 0,
+      creationDate: new Date(2000-10-10),
+      user: {
+        userId: '',
+        password: '',
+        userMail: '',
+        userName: '',
+      }
+    },
+    user: {
+      userId: '',
+      password: '',
+      userMail: '',
+      userName: '',
+    }
   };
 
-  constructor(private ar: ActivatedRoute, private msg: MessageService) {
-    let id = this.ar.snapshot.params['id'];
-    console.log(id);
-    if (id != undefined) {
-      this.msg.getMessageById(id).subscribe((data: any) => {
-        this.message = data;
-      });
-    }
+  constructor(private ms: MessageService) {
+    console.log(this.msg)
   }
 }
