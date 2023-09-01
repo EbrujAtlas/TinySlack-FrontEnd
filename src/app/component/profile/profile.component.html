@@ -8,6 +8,8 @@
     <p>Nom : {{ currentUser.userName}}</p>
     <p>Email : {{ currentUser.userMail }}</p>
     <p>Mot de passe : {{ currentUser.password }}</p>
+    <br>
+    <button (click)="deleteUser()">Supprimer mon profil</button>
   </div>
   <div *ngIf="!currentUser">
     <p>Aucun utilisateur connecté.</p>

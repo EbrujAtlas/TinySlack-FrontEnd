@@ -24,6 +24,10 @@ export class UserService {
     return this.httpClient.post<Users>('http://localhost:8080/tinyslack/users', user);
   }
 
+  deleteUser(userName: string | undefined ): Observable<Users>  {
+    return this.httpClient.delete<Users>('http://localhost:8080/tinyslack/users/' + userName);
+  }
+
   //Authenfication
   login() {
     this.isLoggedIn = true;

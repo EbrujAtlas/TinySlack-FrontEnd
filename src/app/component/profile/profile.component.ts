@@ -13,4 +13,8 @@ export class ProfileComponent {
   constructor(private userService: UserService) {
     this.currentUser = this.userService.getCurrentUser();
   }
+
+  deleteUser(){
+    this.userService.deleteUser(this.currentUser?.userName).subscribe();
+  }
 }
