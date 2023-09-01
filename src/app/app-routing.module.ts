@@ -5,9 +5,10 @@ import { SignupComponent } from './component/signup/signup.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { Error404Component } from './component/error404/error404.component';
 import { AboutComponent } from './component/about/about.component';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/signup', pathMatch: 'full'},
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'profile', component: ProfileComponent},
