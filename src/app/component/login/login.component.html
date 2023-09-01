@@ -1,0 +1,23 @@
+<h2>Connexion</h2>
+<form [formGroup]="loginForm" (submit)="onSubmit($event)">
+  <div>
+    <label for="userMail">Email:</label>
+    <input type="userMail" id="email" formControlName="userMail">
+    <div *ngIf="loginForm.get('userMail')?.hasError('required')">
+      Email est requis.
+    </div>
+    <div *ngIf="loginForm.get('userMail')?.hasError('userMail')">
+      Email invalide.
+    </div>
+  </div>
+  <br>
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" formControlName="password">
+    <div *ngIf="loginForm.get('password')?.hasError('required')">
+      Mot de passe est requis.
+    </div>
+  </div>
+  <br>
+  <button class="form-button" type="submit" [disabled]="loginForm.invalid">Connexion</button>
+</form>
