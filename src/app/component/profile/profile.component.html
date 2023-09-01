@@ -1,5 +1,10 @@
 <div *ngIf="currentUser">
-    <h2>Voici vos informations personnelles: </h2>
+<h1>Bonjour, {{ currentUser.userName}}</h1>
+</div>
+<br>
+
+<h2>Voici vos informations personnelles: </h2>
+<div *ngIf="currentUser">
     <p>Nom : {{ currentUser.userName}}</p>
     <p>Email : {{ currentUser.userMail }}</p>
     <p>Mot de passe : {{ currentUser.password }}</p>

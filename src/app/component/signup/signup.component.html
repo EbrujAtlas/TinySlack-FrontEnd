@@ -10,6 +10,7 @@
       Votre nom doit faire moins de {{ signupForm.get('userName')?.errors?.['maxlength']?.requiredLength }} caractères.
   </div>
   </div>
+  <br>
   <div>
     <label for="email">Email:</label>
     <input type="userMail" id="email" formControlName="userMail">
@@ -32,7 +33,16 @@
     </div>
   </div>
   <br>
+  <div>
+    <label for="passwordConfirm">Password confirm:</label>
+    <input type="password" id="passwordConfirm" formControlName="passwordConfirm">
+    <div *ngIf="signupForm.get('passwordConfirm')?.value != signupForm.get('password')?.value">
+      Mot de passe ne correspond pas.
+    </div>
+  </div>
+  <br>
   <button class="form-button" type="submit" [disabled]="signupForm.invalid" >Inscription</button>
 </form>
 
+<br>
 <a routerLink="/login">Déjà inscrit? Cliquez ici !</a>
