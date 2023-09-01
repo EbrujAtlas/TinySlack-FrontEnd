@@ -10,8 +10,8 @@ import { MessageService } from 'src/app/Service/message.service';
 export class MessageComponent {
   @Input() msg: Messages = {
     messageId: '',
-    message: '',
-    messageDate: new Date(2000, 10, 10),
+    messageContent: '',
+    messageDate: '',
     channel: {
       channelId: '',
       channelName: '',
