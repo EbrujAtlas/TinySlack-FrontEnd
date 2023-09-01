@@ -1,5 +1,4 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Channels } from 'src/app/Model/channels';
 import { Messages } from 'src/app/Model/messages';
@@ -24,7 +23,6 @@ export class ChannelComponent {
     let name = this.ar.snapshot.params['name'];
 
     // récupérer le name qui est dans l'URL pour afficher le channel correspondant
-
     this.cs.getChannelByName(name).subscribe((data: any) => {
       console.log(data);
       this.canal = data;
