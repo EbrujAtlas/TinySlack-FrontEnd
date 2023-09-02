@@ -17,4 +17,8 @@ export class ListChannelComponent {
       this.channels = data;
     });
   }
+
+  onClick() {
+    this.route.navigate(['/newchannel'])
+  }
 }
