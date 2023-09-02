@@ -1,6 +1,5 @@
 #checkbox-delete {
   margin-top: 30%;
-  text-align: center;
 }
 #checkbox-delete button {
   margin-top: 5%;
@@ -10,8 +9,4 @@
 }
 #checkbox-delete label {
   margin-left: 2%;
-}
-
-.center {
-  text-align: center;
 }
