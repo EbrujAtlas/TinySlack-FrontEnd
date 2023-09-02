@@ -9,6 +9,7 @@ import { CreateChannelComponent } from './component/create-channel/create-channe
 import { MessageComponent } from './component/message/message.component';
 import { CreateMessageComponent } from './component/create-message/create-message.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     MessageComponent,
     CreateMessageComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

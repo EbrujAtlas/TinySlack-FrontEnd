@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Messages } from '../Model/messages';
 import { Channels } from '../Model/channels';
 import { Observable } from 'rxjs';
+import { Users } from '../Model/users';
 
 @Injectable({
   providedIn: 'root',
@@ -24,6 +25,17 @@ export class MessageService {
   }
 
   getMessagesFromChannel(channel: Channels): Observable<Messages[] | any> {
-    return this.http.get(this.url + 'channels/' + channel.channelName + '/messages')
+    return this.http.get(
+      this.url + 'channels/' + channel.channelName + '/messages'
+    );
+  }
+
+  postMessage(messageContent: string, channel: Channels) {
+    const body = {
+      messageContent: messageContent,
+
+      channel: channel,
+    };
+    return this.http.post(this.url + 'messages', body);
   }
 }

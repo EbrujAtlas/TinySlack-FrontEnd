@@ -30,7 +30,7 @@ export class MessageComponent {
       password: '',
       userMail: '',
       userName: '',
-    }
+    } 
   };
 
   constructor(private ms: MessageService) {
