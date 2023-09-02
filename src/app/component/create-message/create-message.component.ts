@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Channels } from 'src/app/Model/channels';
 import { Messages } from 'src/app/Model/messages';
+import { Users } from 'src/app/Model/users';
 import { ChannelService } from 'src/app/Service/channel.service';
 import { MessageService } from 'src/app/Service/message.service';
+import { UserService } from 'src/app/Service/user.service';
 
 @Component({
   selector: 'app-create-message',
@@ -37,10 +39,15 @@ export class CreateMessageComponent {
   };
   canalActuel!: Channels;
 
+  // currentUser: Users;
+
+  // sendUser: Users;
+
   constructor(
     private ms: MessageService,
     private ar: ActivatedRoute,
-    private cs: ChannelService
+    private cs: ChannelService,
+    private us: UserService
   ) {
     let name = this.ar.snapshot.params['name']; // capture des parametres dans url
     // récupérer le name qui est dans l'URL pour afficher le channel correspondant
@@ -48,6 +55,11 @@ export class CreateMessageComponent {
       console.log(data);
       this.canalActuel = data;
     });
+
+    // récupérer le user de la session en cours
+    // this.currentUser = this.us.getCurrentUser();
+    // this.sendUser = this.us.getUserByName(this.currentUser.userName);
+    // console.log(this.currentUser)
   }
   AddMessage() {
     this.ms
@@ -57,29 +69,3 @@ export class CreateMessageComponent {
       });
   }
 }
-
-// let tmp: Messages = {
-//   messageId: this.message.messageId,
-//   messageContent: this.message.messageContent,
-//   messageDate: this.message.messageDate,
-//   channel: {
-//     channelId: this.message.channel.channelId,
-//     channelName: this.message.channel.channelName,
-//     description: this.message.channel.description,
-//     protection: this.message.channel.protection,
-//     creationDate: this.message.channel.creationDate,
-//     user: {
-//       userId: this.message.channel.user.userId,
-//       password: this.message.channel.user.password,
-//       userMail: this.message.channel.user.userMail,
-//       userName: this.message.channel.user.userName,
-//     },
-//   },
-//   user: {
-//     userId: this.message.user.userId,
-//     password: this.message.user.password,
-//     userMail: this.message.user.userMail,
-//     userName: this.message.user.userName,
-//   },
-// };
-// console.log(tmp);
