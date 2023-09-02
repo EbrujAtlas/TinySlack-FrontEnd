@@ -1,7 +1,69 @@
-.icon-profile{
-  width: 50px;
+.icon-profile {
+  width: 100px;
   height: auto;
 }
-.icon-profile:hover{
- transform: scale(1.2);
+.icon-profile:hover {
+  transform: scale(1.2);
+}
+h1 {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.title {
+  text-decoration: none;
+  color: midnightblue;
+}
+.title:visited,
+.about:visited {
+  color: midnightblue;
+}
+header,
+footer {
+  background-color: lightskyblue;
+  color: midnightblue;
+  width: 100%;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  display: flex;
+  height: 10%;
+  padding: 50px 30px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  height: 10%;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.about {
+  text-decoration: none;
+  color: midnightblue;
+}
+
+.about:hover {
+  color: aliceblue;
+}
+.footer-logo {
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+#content {
+  margin: 11% 0;
+}
+.deconnexion {
+  background-color: aliceblue;
+  color: rgb(25, 25, 112);
+  border: none;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgb(25, 25, 112, 0.5);
 }

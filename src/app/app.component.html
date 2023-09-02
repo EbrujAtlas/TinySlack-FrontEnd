@@ -1,5 +1,5 @@
 <header>
-  <h1>TinySlack</h1>
+  <a routerLink="channel/:name" class="title"><h1>TinySlack</h1></a>
   <nav>
     <a *ngIf="userService.isLoggedInUser()" routerLink="/profile"
       ><img class="icon-profile" src="assets/images/icon-profile.png"
@@ -10,17 +10,18 @@
   </nav>
 </header>
 
-<router-outlet></router-outlet>
+<div id="content"><router-outlet></router-outlet></div>
 
 <footer>
+  <a routerLink="/about" class="about">A propos</a>
+  <p class="footer-logo">TinySlack</p>
   <button
     *ngIf="userService.isLoggedInUser()"
     routerLink="/login"
-    class="form-button"
+    class="form-button, deconnexion"
     type="submit"
     (click)="logout()"
   >
     Déconnexion
   </button>
-  <a routerLink="/about">A propos</a>
 </footer>
