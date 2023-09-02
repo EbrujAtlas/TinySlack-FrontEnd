@@ -1,10 +1,24 @@
+import { Users } from './users';
+
 export interface Channels {
   channelId: string;
+  channelName: string;
   description: string;
-  channel_name: string;
-  creationDate: Date;
   protection: number;
-  userId: string;
+  creationDate: Date;
+  user: Users;
 }
 
-//Verifier avec Christopher
+export const channelInt: Channels = {
+  channelId: '',
+  channelName: '',
+  description: '',
+  protection: 0,
+  creationDate: new Date(2000 - 10 - 10),
+  user: {
+    userId: '',
+    password: '',
+    userMail: '',
+    userName: '',
+  },
+};

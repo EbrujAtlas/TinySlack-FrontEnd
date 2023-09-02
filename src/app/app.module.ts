@@ -10,6 +10,11 @@ import { SignupComponent } from './component/signup/signup.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { Error404Component } from './component/error404/error404.component';
 import { AboutComponent } from './component/about/about.component';
+import { ChannelComponent } from './component/channel/channel.component';
+import { ListChannelComponent } from './component/list-channel/list-channel.component';
+import { CreateChannelComponent } from './component/create-channel/create-channel.component';
+import { MessageComponent } from './component/message/message.component';
+import { CreateMessageComponent } from './component/create-message/create-message.component';
 
 @NgModule({
   declarations: [
@@ -18,16 +23,22 @@ import { AboutComponent } from './component/about/about.component';
     SignupComponent,
     ProfileComponent,
     Error404Component,
-    AboutComponent
+    AboutComponent,
+    ChannelComponent,
+    ListChannelComponent,
+    CreateChannelComponent,
+    MessageComponent,
+    CreateMessageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
+
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -8,17 +8,18 @@ import { AboutComponent } from './component/about/about.component';
 import { AppComponent } from './app.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/login', pathMatch: 'full'},
-  {path: 'login', component: LoginComponent},
-  {path: 'signup', component: SignupComponent},
-  {path: 'profile', component: ProfileComponent},
-  {path: 'about', component: AboutComponent}, 
-  {path: '**', component: Error404Component}
-  
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'about', component: AboutComponent },
+  { path: '**', component: Error404Component },
+  { path: 'channel/:name', component: ChannelComponent },
 ];
+import { ChannelComponent } from './component/channel/channel.component';
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
