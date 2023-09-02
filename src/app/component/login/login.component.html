@@ -2,12 +2,12 @@
 <form [formGroup]="loginForm" (submit)="onSubmit($event)">
   <div>
     <label for="userMail">Email:</label>
-    <input type="userMail" id="email" formControlName="userMail">
+    <input type="email" id="userMail" formControlName="userMail">
     <div *ngIf="loginForm.get('userMail')?.hasError('required')">
-      Email est requis.
+      <p>Email est requis.</p>
     </div>
     <div *ngIf="loginForm.get('userMail')?.hasError('userMail')">
-      Email invalide.
+      <p>Email invalide.</p>
     </div>
   </div>
   <br>
@@ -15,7 +15,7 @@
     <label for="password">Password:</label>
     <input type="password" id="password" formControlName="password">
     <div *ngIf="loginForm.get('password')?.hasError('required')">
-      Mot de passe est requis.
+     <p> Mot de passe est requis.</p>
     </div>
   </div>
   <br>

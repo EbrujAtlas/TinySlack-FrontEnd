@@ -2,23 +2,23 @@
 <form [formGroup]="signupForm" (submit)="onSubmit($event)">
   <div>
     <label for="userName">Nom:</label>
-    <input type="userName" id="name" formControlName="userName">
+    <input type="text" id="username" formControlName="userName">
     <div *ngIf="signupForm.get('userName')?.hasError('required')">
-      Votre nom est requis.
+      <p>Votre nom est requis.</p>
     </div>
     <div *ngIf="signupForm.get('userName')?.hasError('maxlength')">
-      Votre nom doit faire moins de {{ signupForm.get('userName')?.errors?.['maxlength']?.requiredLength }} caractères.
+      <p>Votre nom doit faire moins de {{ signupForm.get('userName')?.errors?.['maxlength']?.requiredLength }} caractères.</p>
   </div>
   </div>
   <br>
   <div>
-    <label for="email">Email:</label>
-    <input type="userMail" id="email" formControlName="userMail">
+    <label for="userMail">Email:</label>
+    <input type="email" id="userMail" formControlName="userMail">
     <div *ngIf="signupForm.get('userMail')?.hasError('required')">
-      Email est requis.
+      <p>Email est requis.</p>
     </div>
-    <div *ngIf="signupForm.get('userMail')?.hasError('userMail')">
-      Email invalide.
+    <div *ngIf="signupForm.get('userMail')?.hasError('email')">
+      <p>Email invalide.</p>
     </div>
   </div>
   <br>
@@ -26,10 +26,10 @@
     <label for="password">Password:</label>
     <input type="password" id="password" formControlName="password">
     <div *ngIf="signupForm.get('password')?.hasError('required')">
-      Mot de passe est requis.
+      <p>Mot de passe est requis.</p>
     </div>
     <div *ngIf="signupForm.get('password')?.hasError('minlength')">
-        Mot de passe doit avoir au moins {{ signupForm.get('password')?.errors?.['minlength']?.requiredLength }} caractères.
+       <p> Mot de passe doit avoir au moins {{ signupForm.get('password')?.errors?.['minlength']?.requiredLength }} caractères.</p>
     </div>
   </div>
   <br>
@@ -37,7 +37,7 @@
     <label for="passwordConfirm">Password confirm:</label>
     <input type="password" id="passwordConfirm" formControlName="passwordConfirm">
     <div *ngIf="signupForm.get('passwordConfirm')?.value != signupForm.get('password')?.value">
-      Mot de passe ne correspond pas.
+      <p>Mot de passe ne correspond pas.</p>
     </div>
   </div>
   <br>

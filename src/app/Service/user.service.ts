@@ -10,6 +10,7 @@ export class UserService {
   //Déclaration de variable
   private isLoggedIn: boolean = false;
   private currentUser: Users | null = null;
+  private users: Users[] = [];
 
   //Constructeur
   constructor(private httpClient: HttpClient,) { }
@@ -52,5 +53,23 @@ export class UserService {
 
   getCurrentUser(): Users | null {
     return this.currentUser;
+  }
+
+
+  //pour charger les users bdd dans signup
+  loadUsers() {
+    this.httpClient.get<Users[]>('http://localhost:8080/tinyslack/users').subscribe((data) => {
+      this.users = data;
+    });
+    console.log(this.users);
+  }
+
+  //permet de vérifier si l'user du signup utilise un nom/mail déjà utilisé en bdd
+  getUserByUserName(userName: string): Users | undefined {
+    return this.users.find((user) => user.userName === userName);
+  }
+
+  getUserByUserEmail(email: string): Users | undefined {
+    return this.users.find((user) => user.userMail === email);
   }
 }
