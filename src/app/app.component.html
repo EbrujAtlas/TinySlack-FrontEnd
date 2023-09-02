@@ -1,37 +1,32 @@
-<<<<<<< HEAD
-<app-list-channel></app-list-channel>
 <!--// on appel notre composant list channel dans le composant principale-->
-=======
+
 <header>
-    <h1>TinySlack</h1>
-    <nav>
-        <a *ngIf="userService.isLoggedInUser()" routerLink="/profile"><img class="icon-profile" src="assets/images/icon-profile.png" ></a>
-        <a *ngIf="!userService.isLoggedInUser()" routerLink="/login"><img  class="icon-profile" src="assets/images/icon-profile.png" ></a>
-    </nav>
+  <h1>TinySlack</h1>
+  <nav>
+    <a *ngIf="userService.isLoggedInUser()" routerLink="/profile"
+      ><img class="icon-profile" src="assets/images/icon-profile.png"
+    /></a>
+    <a *ngIf="!userService.isLoggedInUser()" routerLink="/login"
+      ><img class="icon-profile" src="assets/images/icon-profile.png"
+    /></a>
+  </nav>
 </header>
->>>>>>> origin/user
 
-<router-outlet></router-outlet>
-
+<section>
+  <app-list-channel></app-list-channel>
+</section>
 
 <footer>
-    <button *ngIf="userService.isLoggedInUser()" routerLink="/login" class="form-button" type="submit" (click)="logout()">Déconnexion</button>
-    <a routerLink="/about">A propos</a>
+  <button
+    *ngIf="userService.isLoggedInUser()"
+    routerLink="/login"
+    class="form-button"
+    type="submit"
+    (click)="logout()"
+  >
+    Déconnexion
+  </button>
+  <a routerLink="/about">A propos</a>
 </footer>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<router-outlet></router-outlet>
