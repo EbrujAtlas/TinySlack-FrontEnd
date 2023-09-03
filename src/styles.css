@@ -31,9 +31,6 @@ button:hover,
 .plus-btn {
   margin-left: 40px;
 }
-.center {
-  text-align: center;
-}
 
 /*CSS pour l'affichage global*/
 .container {
@@ -63,6 +60,7 @@ button:hover,
 }
 .content {
   grid-area: content;
+  text-align: center;
 }
 
 /* Media query pour les écrans de moins de 600px */
