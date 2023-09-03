@@ -1,10 +1,7 @@
-<div class="wrapper">
-  <h3>{{ canal.channelName }}</h3>
-  <div>{{ canal.description }}</div>
-  <p>Créateur: {{ canal.user.userName }}</p>
-  <div *ngFor="let message of messagesFromChannel">
-    <app-message [msg]="message"></app-message>
-  </div>
-  <app-create-message></app-create-message>
+<h3>{{ canal.channelName }}</h3>
+<div>{{ canal.description }}</div>
+<p>Créateur: {{ canal.user.userName }}</p>
+<div *ngFor="let message of messagesFromChannel">
+  <app-message [msg]="message"></app-message>
 </div>
-
+<app-create-message></app-create-message>

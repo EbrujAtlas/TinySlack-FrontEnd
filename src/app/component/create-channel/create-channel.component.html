@@ -1,5 +1,4 @@
-
-<form class="wrapper" [formGroup]="channelCreationForm" (submit)="onClick($event)">
+<form [formGroup]="channelCreationForm" (submit)="onClick($event)">
   <label for="channelName"></label>
   <input
     type="text"

@@ -9,7 +9,8 @@ h1 {
   text-transform: uppercase;
   font-weight: bold;
 }
-.title, .footer-a {
+.title,
+.footer-a {
   text-decoration: none;
   color: midnightblue;
 }
@@ -26,9 +27,10 @@ footer {
 }
 
 header {
-  position: fixed;
-  top: 0;
+  /* position: fixed;
+  top: 0; */
   display: flex;
+
   height: 10%;
   padding: 50px 30px;
   justify-content: space-between;
@@ -58,14 +60,8 @@ footer {
   font-weight: bold;
   margin-bottom: 0;
 }
-#content {
-  margin: 150px 0px;
-  /* display: flex;
-  align-items: center;
-  justify-content: flex-start; */
-}
 
-section{
+section {
   padding-left: 2%;
 }
 
@@ -75,37 +71,4 @@ section{
   border: none;
   border-radius: 10px;
   box-shadow: 5px 5px 5px rgb(25, 25, 112, 0.5);
-}
-
-/*CSS pour l'affichage global*/
-.container {
-  display: grid; 
-  grid-template-columns: 1fr 1fr 1fr; 
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr; 
-  gap: 0px 0px; 
-  padding: 0;
-  margin: 0;
-  grid-template-areas: 
-    "header header header"
-    "channel-list content content"
-    "channel-list content content"
-    "channel-list content content"
-    "footer footer footer"; 
-    
-}
-.header { grid-area: header; }
-.channel-list { grid-area: channel-list; }
-.footer { grid-area: footer; }
-.content { grid-area: content; }
-
-
-
-
-/* Media query pour les écrans de moins de 600px */
-@media screen and (max-width: 426px) {
-  footer {
-    flex-direction: column;
-    align-items: center; /* Vous pouvez ajuster ceci selon vos besoins */
-    height: 15%;
-  }
 }

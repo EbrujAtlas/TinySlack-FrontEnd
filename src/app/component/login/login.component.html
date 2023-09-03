@@ -1,30 +1,28 @@
-<div class="wrapper center">
-  <h2>Connexion</h2>
-  <form [formGroup]="loginForm" (submit)="onSubmit($event)">
-    <div>
-      <label for="userMail">Email:</label>
-      <input type="email" id="userMail" formControlName="userMail" />
-      <div *ngIf="loginForm.get('userMail')?.hasError('required')">
-        <p>Email est requis.</p>
-      </div>
-      <div *ngIf="loginForm.get('userMail')?.hasError('userMail')">
-        <p>Email invalide.</p>
-      </div>
+<h2>Connexion</h2>
+<form [formGroup]="loginForm" (submit)="onSubmit($event)">
+  <div>
+    <label for="userMail">Email:</label>
+    <input type="email" id="userMail" formControlName="userMail" />
+    <div *ngIf="loginForm.get('userMail')?.hasError('required')">
+      <p>Email est requis.</p>
     </div>
-    <br />
-    <div>
-      <label for="password">Mot de passe:</label>
-      <input type="password" id="password" formControlName="password" />
-      <div *ngIf="loginForm.get('password')?.hasError('required')">
-        <p>Mot de passe est requis.</p>
-      </div>
+    <div *ngIf="loginForm.get('userMail')?.hasError('userMail')">
+      <p>Email invalide.</p>
     </div>
-    <br />
-    <button class="form-button" type="submit" [disabled]="loginForm.invalid">
-      Connexion
-    </button>
-  </form>
-
+  </div>
   <br />
-  <a routerLink="/signup">Nouveau membre? Vous inscrire!</a>
-</div>
+  <div>
+    <label for="password">Mot de passe:</label>
+    <input type="password" id="password" formControlName="password" />
+    <div *ngIf="loginForm.get('password')?.hasError('required')">
+      <p>Mot de passe est requis.</p>
+    </div>
+  </div>
+  <br />
+  <button class="form-button" type="submit" [disabled]="loginForm.invalid">
+    Connexion
+  </button>
+</form>
+
+<br />
+<a routerLink="/signup">Nouveau membre? Vous inscrire!</a>

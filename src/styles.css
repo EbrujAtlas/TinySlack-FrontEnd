@@ -1,4 +1,6 @@
-html, body , .container {
+html,
+body,
+.container {
   height: 100%;
   margin: 0;
 }
@@ -6,16 +8,16 @@ html, body , .container {
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   background-color: aliceblue;
-  margin: 0;
+
   padding: 0;
   color: midnightblue;
 }
-.wrapper {
- /* display: flex;
+/* .wrapper {
+  display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;*/
-}
+  text-align: center;
+} */
 
 button {
   background-color: rgb(25, 25, 112);
@@ -27,12 +29,48 @@ button {
   box-shadow: 5px 5px 5px rgb(25, 25, 112, 0.5);
 }
 
-button:hover, .title:hover, .footer-a:hover {
+button:hover,
+.title:hover,
+.footer-a:hover {
   transform: scale(1.05);
 }
 
+.plus-btn {
+  margin-left: 40px;
+}
 .center {
   text-align: center;
+}
+
+/*CSS pour l'affichage global*/
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  padding: 0;
+  margin: 0;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "header header header"
+    "channel-list content content"
+    "channel-list content content"
+    "channel-list content content"
+    "footer footer footer";
+}
+.header {
+  grid-area: header;
+}
+.channel-list {
+  grid-area: channel-list;
+
+  padding: 2%;
+}
+.footer {
+  grid-area: footer;
+}
+.content {
+  grid-area: content;
 }
 
 /* Media query pour les écrans de moins de 600px */
