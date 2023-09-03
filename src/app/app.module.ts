@@ -15,6 +15,10 @@ import { SignupComponent } from './component/signup/signup.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { Error404Component } from './component/error404/error404.component';
 import { AboutComponent } from './component/about/about.component';
+import { DeleteChannelComponent } from './component/delete-channel/delete-channel.component';
+import { DeleteMessageComponent } from './component/delete-message/delete-message.component';
+import { ChangeChannelComponent } from './component/change-channel/change-channel.component';
+import { ChangeMessageComponent } from './component/change-message/change-message.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +33,10 @@ import { AboutComponent } from './component/about/about.component';
     ProfileComponent,
     Error404Component,
     AboutComponent,
+    DeleteChannelComponent,
+    DeleteMessageComponent,
+    ChangeChannelComponent,
+    ChangeMessageComponent,
   ],
   imports: [
     BrowserModule,
