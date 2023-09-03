@@ -1,1 +1,33 @@
-<p>create-channel works!</p>
+
+<form class="wrapper" [formGroup]="channelCreationForm" (submit)="onClick($event)">
+  <label for="channelName"></label>
+  <input
+    type="text"
+    id="channelName"
+    name="channelName"
+    formControlName="channelName"
+    placeholder="Nom du canal"
+  /><br /><br />
+  <div *ngIf="channelCreationForm.get('channelName')?.hasError('required')">
+    <p>Veuillez indiquer un nom de canal.</p>
+  </div>
+  <div *ngIf="channelCreationForm.get('channelName')?.hasError('hasSpaces')">
+    <p>Veuillez ne pas utiliser d'espace.</p>
+  </div>
+  <label for="description"></label>
+  <input
+    type="text"
+    id="description"
+    name="description"
+    formControlName="description"
+    placeholder="Description"
+  /><br /><br />
+  <div *ngIf="channelCreationForm.get('description')?.hasError('required')">
+    <p>Veuillez entrer une description.</p>
+  </div>
+
+  <!-- <label for="delete">Souhaitez-vous vérouiller votre canal ?</label>
+  <input class="Visible" type="checkbox" name="delete" id="delete" (change)="changeEvent($event)"> -->
+
+  <button [disabled]="channelCreationForm.invalid">Créer un canal</button>
+</form>

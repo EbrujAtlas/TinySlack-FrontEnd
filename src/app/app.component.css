@@ -9,12 +9,13 @@ h1 {
   text-transform: uppercase;
   font-weight: bold;
 }
-.title {
+.title, .footer-a {
   text-decoration: none;
   color: midnightblue;
 }
 .title:visited,
-.about:visited {
+.about:visited,
+.footer-a:visited {
   color: midnightblue;
 }
 header,
@@ -59,9 +60,9 @@ footer {
 }
 #content {
   margin: 150px 0px;
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-start; */
 }
 
 section{
@@ -75,6 +76,29 @@ section{
   border-radius: 10px;
   box-shadow: 5px 5px 5px rgb(25, 25, 112, 0.5);
 }
+
+/*CSS pour l'affichage global*/
+.container {
+  display: grid; 
+  grid-template-columns: 1fr 1fr 1fr; 
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr; 
+  gap: 0px 0px; 
+  padding: 0;
+  margin: 0;
+  grid-template-areas: 
+    "header header header"
+    "channel-list content content"
+    "channel-list content content"
+    "channel-list content content"
+    "footer footer footer"; 
+    
+}
+.header { grid-area: header; }
+.channel-list { grid-area: channel-list; }
+.footer { grid-area: footer; }
+.content { grid-area: content; }
+
+
 
 
 /* Media query pour les écrans de moins de 600px */

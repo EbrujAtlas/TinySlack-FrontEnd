@@ -30,12 +30,12 @@ export class MessageService {
     );
   }
 
-  postMessage(messageContent: string, channel: Channels) {
+  postMessage(messageContent: string, user: Users, channel: Channels) {
     const body = {
       messageContent: messageContent,
-
+      user: user,
       channel: channel,
     };
-    return this.http.post(this.url + 'messages', body);
+    return this.http.post(this.url + 'messages', body); // requete http envers bdd
   }
 }

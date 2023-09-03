@@ -1,3 +1,8 @@
+html, body , .container {
+  height: 100%;
+  margin: 0;
+}
+
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   background-color: aliceblue;
@@ -6,11 +11,10 @@ body {
   color: midnightblue;
 }
 .wrapper {
-  display: flex;
+ /* display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  margin-left: 60%;
+  text-align: center;*/
 }
 
 button {
@@ -23,7 +27,7 @@ button {
   box-shadow: 5px 5px 5px rgb(25, 25, 112, 0.5);
 }
 
-button:hover {
+button:hover, .title:hover, .footer-a:hover {
   transform: scale(1.05);
 }
 

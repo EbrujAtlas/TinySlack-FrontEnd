@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Channels } from 'src/app/Model/channels';
 import { Messages } from 'src/app/Model/messages';
+import { Users } from 'src/app/Model/users';
 import { ChannelService } from 'src/app/Service/channel.service';
 import { MessageService } from 'src/app/Service/message.service';
+import { UserService } from 'src/app/Service/user.service';
 
 @Component({
   selector: 'app-create-message',
@@ -35,51 +37,43 @@ export class CreateMessageComponent {
       userName: '',
     },
   };
+
   canalActuel!: Channels;
+  currentUser: Users | null;
 
   constructor(
     private ms: MessageService,
     private ar: ActivatedRoute,
-    private cs: ChannelService
+    private cs: ChannelService,
+    private us: UserService,
+    private route: Router
   ) {
-    let name = this.ar.snapshot.params['name']; // capture des parametres dans url
     // récupérer le name qui est dans l'URL pour afficher le channel correspondant
+    let name = this.ar.snapshot.params['name'];
     this.cs.getChannelByName(name).subscribe((data: any) => {
-      console.log(data);
       this.canalActuel = data;
     });
+
+    // récupérer le user de la session en cours
+    this.currentUser = this.us.getCurrentUser();
   }
-  AddMessage() {
-    this.ms
-      .postMessage(this.message.messageContent, this.canalActuel)
-      .subscribe((data) => {
-        console.log(data);
-      });
+
+  addMessage() {
+    // si l'utilisateur est connecté, on envoie le message
+    if (this.currentUser) {
+      this.ms
+        .postMessage(
+          this.message.messageContent,
+          this.currentUser,
+          this.canalActuel
+        )
+        .subscribe();
+        alert('Ton message a bien été envoyé');
+    }
+    // sinon, on le redirige vers la page de connexion
+    else {
+      alert('Veuillez vous connecter');
+      this.route.navigate(['/login']);
+    }
   }
 }
-
-// let tmp: Messages = {
-//   messageId: this.message.messageId,
-//   messageContent: this.message.messageContent,
-//   messageDate: this.message.messageDate,
-//   channel: {
-//     channelId: this.message.channel.channelId,
-//     channelName: this.message.channel.channelName,
-//     description: this.message.channel.description,
-//     protection: this.message.channel.protection,
-//     creationDate: this.message.channel.creationDate,
-//     user: {
-//       userId: this.message.channel.user.userId,
-//       password: this.message.channel.user.password,
-//       userMail: this.message.channel.user.userMail,
-//       userName: this.message.channel.user.userName,
-//     },
-//   },
-//   user: {
-//     userId: this.message.user.userId,
-//     password: this.message.user.password,
-//     userMail: this.message.user.userMail,
-//     userName: this.message.user.userName,
-//   },
-// };
-// console.log(tmp);

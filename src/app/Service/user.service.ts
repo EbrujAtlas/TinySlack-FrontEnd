@@ -21,6 +21,11 @@ export class UserService {
     return this.httpClient.get<Users[]>('http://localhost:8080/tinyslack/users');
   }
 
+  // Récupérer l'utilisateur par son nom
+  getUserByName(userName: string) {
+    return this.httpClient.get('http://localhost:8080/tinyslack/users/' + userName);
+  }
+
   addUser(user: Users): Observable<Users> {
     return this.httpClient.post<Users>('http://localhost:8080/tinyslack/users', user );
   }
@@ -73,3 +78,4 @@ export class UserService {
     return this.users.find((user) => user.userMail === email);
   }
 }
+

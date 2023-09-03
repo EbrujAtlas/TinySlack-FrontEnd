@@ -1,6 +1,5 @@
 <form>
   <label for="messageContent"></label>
-
   <input
     type="text"
     id="messageContent"
@@ -9,6 +8,5 @@
     [(ngModel)]="message.messageContent"
   />
 
-  <br>
-  <button (click)="AddMessage()">Envoyer</button>
+  <button (click)="addMessage()">Envoyer</button>
 </form>
