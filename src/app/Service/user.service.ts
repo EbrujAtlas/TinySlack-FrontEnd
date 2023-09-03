@@ -78,3 +78,4 @@ export class UserService {
     return this.users.find((user) => user.userMail === email);
   }
 }
+
