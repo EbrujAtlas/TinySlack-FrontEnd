@@ -5,12 +5,13 @@
   <button (click)="onDisplayForm()">Modifier</button>
   <ng-template *ngIf="displayForm"
     ></ng-template>
+    <button (click)="delete()">Supprimer</button>
 </div>
 <app-change-channel [actualChannel]="canal"></app-change-channel
   >
 
-<!-- <div *ngFor="let message of messagesFromChannel">
+<div *ngFor="let message of messagesFromChannel">
   <app-message [msg]="message"></app-message>
-</div> -->
+</div>
 
 <app-create-message></app-create-message>

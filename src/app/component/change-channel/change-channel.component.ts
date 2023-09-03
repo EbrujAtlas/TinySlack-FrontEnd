@@ -35,27 +35,37 @@ export class ChangeChannelComponent {
 
     this.channelModificationForm = this.fb.group({
       channelName: ['', [Validators.required, noSpacesValidator]],
-      description: ['', [Validators.required]],
+      channelDescription: ['', [Validators.required]],
     });
   }
 
-  ngOnInit() : void {
-    this.channelModificationForm.controls['channelName'].setValue(this.actualChannel.channelName);
-    this.channelModificationForm.controls['description'].setValue(this.actualChannel.channelDescription);
+  ngOnInit(): void {
+    this.channelModificationForm.controls['channelName'].setValue(
+      this.actualChannel.channelName
+    );
+    this.channelModificationForm.controls['channelDescription'].setValue(
+      this.actualChannel.channelDescription
+    );
   }
 
   updateChannel(event: Event) {
-    // si l'utilisateur est connecté, on créé le canal
+    // si l'utilisateur est connecté, on modifie le canal
     if (this.currentUser) {
-      this.cs
-        .patchChannel(
-          this.channelModificationForm.value
-        )
-        .subscribe((response) => {
-          // Gérez la réponse du serveur
-          console.log('Réponse du serveur :', response);
-          alert('Votre canal a bien été créé');
-        });
+      const modifiedChannel = {
+        channelId: '',
+        channelName: this.channelModificationForm.value.channelName,
+        channelDescription:
+          this.channelModificationForm.value.channelDescription,
+        locked: 0,
+        creationDate: new Date(),
+        user: this.currentUser,
+      };
+      console.log(modifiedChannel);
+      this.cs.patchChannel(modifiedChannel).subscribe((response) => {
+        // Gérez la réponse du serveur
+        console.log('Réponse du serveur :', response);
+        alert('Votre canal a bien été modifié');
+      });
     }
     // sinon, on le redirige vers la page de connexion
     else {

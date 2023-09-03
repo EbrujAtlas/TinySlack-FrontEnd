@@ -37,17 +37,8 @@ export class ChannelViewComponent {
       let name = params.get('name');
       if (name) {
         this.cs.getChannelByName(name).subscribe((data: any) => {
-          
           this.canal = data;
           console.log(this.canal);
-
-          //récupérer les messages liés à ce canal
-          // this.ms
-          //   .getMessagesFromChannel(this.canal)
-          //   .subscribe((messagesList) => {
-          //     console.log(messagesList);
-          //     this.messagesFromChannel = messagesList;
-          //   });
         });
       }
     });

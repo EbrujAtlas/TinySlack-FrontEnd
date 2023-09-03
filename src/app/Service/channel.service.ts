@@ -34,6 +34,7 @@ export class ChannelService {
       channelName: channel.channelName,
       channelDescription: channel.channelDescription,
       user: user,
+      locked: 0,
     };
     return this.http.post(this.url + 'channels', body);
   }
@@ -43,9 +44,12 @@ export class ChannelService {
     const body = {
       channelName: channel.channelName,
       channelDescription: channel.channelDescription,
-      locked: channel.locked,
       user: channel.user,
     };
     return this.http.patch(this.url + 'channels/' + channel.channelName, body);
+  }
+
+  deleteChannel(channel: Channels) {
+    return this.http.delete(this.url + 'channels/' + channel.channelName);
   }
 }

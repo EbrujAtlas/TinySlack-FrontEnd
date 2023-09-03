@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Channels } from 'src/app/Model/channels';
 import { Messages } from 'src/app/Model/messages';
 import { Users } from 'src/app/Model/users';
@@ -23,14 +23,31 @@ export class ChannelComponent {
     private cs: ChannelService,
     private ms: MessageService,
     private activeRoute: ActivatedRoute,
-    private us: UserService
+    private us: UserService,
+    private route: Router
   ) {
     let user = us.getCurrentUser();
     if (user) this.currentUser = user;
   }
 
+  ngOnInit(): void {
+    // récupérer les messages liés à ce canal
+    this.ms.getMessagesFromChannel(this.canal).subscribe((messagesList) => {
+      console.log(messagesList);
+      this.messagesFromChannel = messagesList;
+    });
+  }
+
   onDisplayForm() {
     this.displayForm = true;
-    console.log(this.displayForm)
+    console.log(this.displayForm);
+  }
+
+  delete() {
+    this.cs.deleteChannel(this.canal).subscribe((response) => {
+      console.log(response);
+    });
+    alert('Canal supprimé');
+    this.route.navigate(['/profile']);
   }
 }

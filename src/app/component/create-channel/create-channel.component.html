@@ -19,10 +19,10 @@
     type="text"
     id="description"
     name="description"
-    formControlName="description"
+    formControlName="channelDescription"
     placeholder="Description"
   />
-  <div *ngIf="channelCreationForm.get('description')?.hasError('required')">
+  <div *ngIf="channelCreationForm.get('channelDescription')?.hasError('required')">
     <p>Veuillez entrer une description.</p>
   </div>
   <br /><br />

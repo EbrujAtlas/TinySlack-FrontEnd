@@ -29,20 +29,23 @@ export class CreateChannelComponent {
     this.currentUser = this.us.getCurrentUser();
     this.channelCreationForm = this.fb.group({
       channelName: ['', [Validators.required, noSpacesValidator]],
-      description: ['', [Validators.required]],
-      locked: [false],
+      channelDescription: ['', [Validators.required]],
     });
   }
 
   addChannel(event: Event) {
-
     // si l'utilisateur est connecté, on créé le canal
     if (this.currentUser) {
+      const newChannel = {
+        channelId: '',
+        channelName: this.channelCreationForm.value.channelName,
+        channelDescription: this.channelCreationForm.value.channelDescription,
+        locked: 0,
+        creationDate: new Date(),
+        user: this.currentUser,
+      };
       this.cs
-        .postChannel(
-          this.channelCreationForm.value,
-          this.currentUser
-        )
+        .postChannel(newChannel, this.currentUser)
         .subscribe((response) => {
           // Gérez la réponse du serveur
           console.log('Réponse du serveur :', response);
