@@ -68,7 +68,7 @@ export class CreateMessageComponent {
           this.canalActuel
         )
         .subscribe();
-        alert('Ton message a bien été envoyé');
+        alert('Votre message a bien été envoyé');
     }
     // sinon, on le redirige vers la page de connexion
     else {

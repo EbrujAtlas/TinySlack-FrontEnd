@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Channels } from '../Model/channels';
+import { Users } from '../Model/users';
 
 @Injectable({
   providedIn: 'root',
@@ -28,10 +29,11 @@ export class ChannelService {
   }
 
   // ajouter un nouveau canal en BDD
-  postChannel(channel: Channels) {
+  postChannel(channel: Channels, user: Users) {
     const body = {
       channelName: channel.channelName,
       channelDescription: channel.description,
+      user: user
     };
     return this.http.post(this.url + 'channels', body);
   }
