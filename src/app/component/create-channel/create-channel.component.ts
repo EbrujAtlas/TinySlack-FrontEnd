@@ -35,18 +35,12 @@ export class CreateChannelComponent {
   }
 
   addChannel(event: Event) {
-    const formData = this.channelCreationForm.value;
-    const isChecked = formData.locked;
-
-    // transformer la valeur de la case à cocher en une valeur à envoyer en BDD
-    const valueToSend = isChecked ? 1 : 0;
 
     // si l'utilisateur est connecté, on créé le canal
     if (this.currentUser) {
       this.cs
         .postChannel(
           this.channelCreationForm.value,
-          valueToSend,
           this.currentUser
         )
         .subscribe((response) => {

@@ -15,7 +15,7 @@ export class ChannelService {
       'application/x-www-form-urlencoded'
     ),
   };
-  
+
   constructor(private http: HttpClient) {}
 
   // récupérer tous les canaux en BDD
@@ -29,13 +29,24 @@ export class ChannelService {
   }
 
   // ajouter un nouveau canal en BDD
-  postChannel(channel: Channels, protection: number, user: Users) {
+  postChannel(channel: Channels, user: Users) {
     const body = {
       channelName: channel.channelName,
       channelDescription: channel.description,
-      locked: protection,
-      user: user
+      user: user,
     };
     return this.http.post(this.url + 'channels', body);
+  }
+
+  // modifier un canal existant en BDD
+  patchChannel(channelId: string, channel: Channels) {
+    const body = {
+      channelId: channelId,
+      channelName: channel.channelName,
+      channelDescription: channel.description,
+      locked: channel.locked,
+      user: channel.user,
+    };
+    return this.http.patch(this.url + 'channels/' + channelId, body);
   }
 }

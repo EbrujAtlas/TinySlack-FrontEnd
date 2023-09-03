@@ -1,1 +1,30 @@
-<p>change-channel works!</p>
+<form [formGroup]="channelModificationForm" (submit)="updateChannel($event)">
+  <label for="channelName"></label>
+  <input
+    type="text"
+    id="channelName"
+    name="channelName"
+    formControlName="channelName"
+    placeholder="Nom du canal"
+  />
+  <div *ngIf="channelModificationForm.get('channelName')?.hasError('required')">
+    <p>Veuillez indiquer un nom de canal.</p>
+  </div>
+  <div *ngIf="channelModificationForm.get('channelName')?.hasError('hasSpaces')">
+    <p>Veuillez ne pas utiliser d'espace.</p>
+  </div>
+  <br /><br />
+  <label for="description"></label>
+  <input
+    type="text"
+    id="description"
+    name="description"
+    formControlName="description"
+    placeholder="Description"
+  />
+  <div *ngIf="channelModificationForm.get('description')?.hasError('required')">
+    <p>Veuillez entrer une description.</p>
+  </div>
+  <br /><br />
+  <button [disabled]="channelModificationForm.invalid">Modifier un canal</button>
+</form>

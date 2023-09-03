@@ -1,6 +1,13 @@
 <h3>{{ canal.channelName }}</h3>
 <div>{{ canal.description }}</div>
 <p>Créateur: {{ canal.user.userName }}</p>
+<div *ngIf="currentUser.userId == canal.user.userId">
+  <button (click)="onDisplayForm()">Modifier</button>
+  <!-- <ng-template *ngIf="displayForm"
+    ><app-change-channel></app-change-channel
+  ></ng-template> -->
+</div>
+
 <div *ngFor="let message of messagesFromChannel">
   <app-message [msg]="message"></app-message>
 </div>
