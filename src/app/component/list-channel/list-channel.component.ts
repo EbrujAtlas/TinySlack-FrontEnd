@@ -11,9 +11,9 @@ import { ChannelService } from 'src/app/Service/channel.service';
 export class ListChannelComponent {
   channels: Channels[] = [];
 
-  constructor(private ch: ChannelService, private route: Router) {
-    this.ch.getChannels().subscribe((data: any) => {
-      // à chaque fois on va recevoir des donnees, on les mets dans notre tableau channels qui est de type CHannels( Model)
+  constructor(private cs: ChannelService, private route: Router) {
+    // récupérer tous les canaux en BDD
+    this.cs.getChannels().subscribe((data: any) => {
       this.channels = data;
     });
   }

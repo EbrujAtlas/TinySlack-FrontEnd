@@ -5,6 +5,7 @@ import {
   Validators,
   AbstractControl,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ChannelService } from 'src/app/Service/channel.service';
 
 @Component({
@@ -15,7 +16,7 @@ import { ChannelService } from 'src/app/Service/channel.service';
 export class CreateChannelComponent {
   channelCreationForm: FormGroup;
 
-  constructor(private fb: FormBuilder, public cs: ChannelService) {
+  constructor(private fb: FormBuilder, public cs: ChannelService, private route: Router) {
     this.channelCreationForm = this.fb.group({
       channelName: ['', [Validators.required, noSpacesValidator]],
       description: ['', [Validators.required]],
@@ -23,11 +24,12 @@ export class CreateChannelComponent {
   }
 
   onClick(event: Event) {
-    this.cs.addChannel(this.channelCreationForm.value).subscribe();
-    alert("Ton canal a bien été créé")
+    this.cs.postChannel(this.channelCreationForm.value).subscribe();
+    alert('Ton canal a bien été créé');
   }
 }
 
+// validateur personnalisé pour vérifier si une chaîne de caractères contient des espaces
 function noSpacesValidator(control: AbstractControl) {
   const hasSpaces = /\s/.test(control.value);
   return hasSpaces ? { hasSpaces: true } : null;

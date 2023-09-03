@@ -20,15 +20,16 @@ export class ChannelComponent {
     private cs: ChannelService,
     private ms: MessageService
   ) {
-    let name = this.ar.snapshot.params['name'];
-
     // récupérer le name qui est dans l'URL pour afficher le channel correspondant
+    let name = this.ar.snapshot.params['name'];
     this.cs.getChannelByName(name).subscribe((data: any) => {
       console.log(data);
       this.canal = data;
-      this.ms.getMessagesFromChannel(this.canal).subscribe((x) => {
-        console.log(x);
-        this.messagesFromChannel = x;
+
+      //récupérer les messages liés à ce canal
+      this.ms.getMessagesFromChannel(this.canal).subscribe((messagesList) => {
+        console.log(messagesList);
+        this.messagesFromChannel = messagesList;
       });
     });
   }

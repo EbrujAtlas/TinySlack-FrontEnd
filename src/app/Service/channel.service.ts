@@ -17,15 +17,18 @@ export class ChannelService {
   
   constructor(private http: HttpClient) {}
 
+  // récupérer tous les canaux en BDD
   getChannels() {
     return this.http.get(this.url + 'channels');
   }
 
+  // récupérer un canal en BDD par son nom
   getChannelByName(name: string) {
     return this.http.get(this.url + 'channels/' + name);
   }
 
-  addChannel(channel: Channels) {
+  // ajouter un nouveau canal en BDD
+  postChannel(channel: Channels) {
     const body = {
       channelName: channel.channelName,
       channelDescription: channel.description,

@@ -13,8 +13,6 @@ import { UserService } from 'src/app/Service/user.service';
   styleUrls: ['./create-message.component.css'],
 })
 export class CreateMessageComponent {
-  currentUser: Users | null;
-
   message: Messages = {
     messageId: '',
     messageContent: '',
@@ -39,9 +37,9 @@ export class CreateMessageComponent {
       userName: '',
     },
   };
-  canalActuel!: Channels;
 
-  // sendUser: Users;
+  canalActuel!: Channels;
+  currentUser: Users | null;
 
   constructor(
     private ms: MessageService,
@@ -50,28 +48,19 @@ export class CreateMessageComponent {
     private us: UserService,
     private route: Router
   ) {
-    let name = this.ar.snapshot.params['name']; // capture des parametres dans url
     // récupérer le name qui est dans l'URL pour afficher le channel correspondant
+    let name = this.ar.snapshot.params['name'];
     this.cs.getChannelByName(name).subscribe((data: any) => {
-      console.log(data);
       this.canalActuel = data;
     });
 
     // récupérer le user de la session en cours
-    // this.currentUser = this.us.getCurrentUser();
-    // this.sendUser = this.us.getUserByName(this.currentUser.userName);
-    // console.log(this.currentUser)
     this.currentUser = this.us.getCurrentUser();
   }
 
-  AddMessage() {
+  addMessage() {
+    // si l'utilisateur est connecté, on envoie le message
     if (this.currentUser) {
-      console.log(this.currentUser);
-
-      // this.message.user = this.currentUser // on ecrase le use vide
-
-      console.log(this.message.user);
-
       this.ms
         .postMessage(
           this.message.messageContent,
@@ -79,9 +68,11 @@ export class CreateMessageComponent {
           this.canalActuel
         )
         .subscribe();
-      //utilise ce service ( s'abonner: acces /utilise/recevoir un service)
-    } else {
-      alert('veuillez vous connecter');
+        alert('Ton message a bien été envoyé');
+    }
+    // sinon, on le redirige vers la page de connexion
+    else {
+      alert('Veuillez vous connecter');
       this.route.navigate(['/login']);
     }
   }
