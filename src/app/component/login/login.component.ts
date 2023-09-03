@@ -35,6 +35,7 @@ export class LoginComponent {
         if (user) {
           this.userService.login();
           this.userService.setCurrentUser(user);
+          localStorage.setItem('user', JSON.stringify(user));
           this.route.navigate(['/profile']);
           console.log('Utilisateur connecté :', user);
         } else {
@@ -48,6 +49,7 @@ export class LoginComponent {
 
   logout() {
     this.userService.logout(); // Appel à la méthode de déconnexion
+    localStorage.clear();
     console.log('Utilisateur déconnecté');
   }
 }

@@ -17,6 +17,7 @@ import { Error404Component } from './component/error404/error404.component';
 import { AboutComponent } from './component/about/about.component';
 import { ChangeChannelComponent } from './component/change-channel/change-channel.component';
 import { ChangeMessageComponent } from './component/change-message/change-message.component';
+import { ChannelViewComponent } from './component/channel-view/channel-view.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ChangeMessageComponent } from './component/change-message/change-messag
 
     ChangeChannelComponent,
     ChangeMessageComponent,
+    ChannelViewComponent,
   ],
   imports: [
     BrowserModule,

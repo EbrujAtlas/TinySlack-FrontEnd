@@ -20,7 +20,7 @@ export class CreateMessageComponent {
     channel: {
       channelId: '',
       channelName: '',
-      description: '',
+      channelDescription: '',
       locked: 0,
       creationDate: new Date(2000 - 10 - 10),
       user: {

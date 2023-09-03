@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Channels } from 'src/app/Model/channels';
 import { Messages } from 'src/app/Model/messages';
@@ -13,7 +13,7 @@ import { UserService } from 'src/app/Service/user.service';
   styleUrls: ['./channel.component.css'],
 })
 export class ChannelComponent {
-  canal!: Channels;
+  @Input() canal!: Channels;
   currentUser!: Users;
   messagesFromChannel: Messages[] = [];
   displayForm: boolean = false;
@@ -25,37 +25,12 @@ export class ChannelComponent {
     private activeRoute: ActivatedRoute,
     private us: UserService
   ) {
-
-  }
-
-  ngOnInit(): void {
-    this.activeRoute.paramMap.subscribe((params: ParamMap) => {
-      let user = this.us.getCurrentUser();
-      console.log(user)
-      if (user) {
-        this.currentUser = user;
-      }
-
-      // récupérer le name en URL pour récupérer le canal associé
-      let name = params.get('name');
-      if (name) {
-        this.cs.getChannelByName(name).subscribe((data: any) => {
-          console.log(data);
-          this.canal = data;
-
-          //récupérer les messages liés à ce canal
-          this.ms
-            .getMessagesFromChannel(this.canal)
-            .subscribe((messagesList) => {
-              console.log(messagesList);
-              this.messagesFromChannel = messagesList;
-            });
-        });
-      }
-    });
+    let user = us.getCurrentUser();
+    if (user) this.currentUser = user;
   }
 
   onDisplayForm() {
     this.displayForm = true;
+    console.log(this.displayForm)
   }
 }

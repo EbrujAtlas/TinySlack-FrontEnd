@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -20,7 +20,7 @@ import { UserService } from 'src/app/Service/user.service';
 export class ChangeChannelComponent {
   channelModificationForm: FormGroup;
 
-  actualChannel!: Channels;
+  @Input() actualChannel!: Channels;
   currentUser: Users | null;
 
   constructor(
@@ -30,38 +30,25 @@ export class ChangeChannelComponent {
     private ar: ActivatedRoute,
     private route: Router
   ) {
-    // récupérer le name qui est dans l'URL pour afficher le channel correspondant
-    let name = this.ar.snapshot.params['name'];
-    this.cs.getChannelByName(name).subscribe((data: any) => {
-      this.actualChannel = data;
-    });
-
     // récupérer le user de la session en cours
     this.currentUser = this.userService.getCurrentUser();
 
     this.channelModificationForm = this.fb.group({
-      channelId: [this.actualChannel.channelId],
-      channelName: [
-        this.actualChannel.channelName,
-        [Validators.required, noSpacesValidator],
-      ],
-      description: [this.actualChannel.description, [Validators.required]],
-      locked: [this.actualChannel.locked == 0],
+      channelName: ['', [Validators.required, noSpacesValidator]],
+      description: ['', [Validators.required]],
     });
   }
 
+  ngOnInit() : void {
+    this.channelModificationForm.controls['channelName'].setValue(this.actualChannel.channelName);
+    this.channelModificationForm.controls['description'].setValue(this.actualChannel.channelDescription);
+  }
+
   updateChannel(event: Event) {
-    const formData = this.channelModificationForm.value;
-    const isChecked = formData.locked;
-
-    // transformer la valeur de la case à cocher en une valeur à envoyer en BDD
-    const valueToSend = isChecked ? 1 : 0;
-
     // si l'utilisateur est connecté, on créé le canal
     if (this.currentUser) {
       this.cs
         .patchChannel(
-          this.actualChannel.channelId,
           this.channelModificationForm.value
         )
         .subscribe((response) => {

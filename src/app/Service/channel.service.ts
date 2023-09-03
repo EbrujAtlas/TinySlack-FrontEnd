@@ -32,21 +32,20 @@ export class ChannelService {
   postChannel(channel: Channels, user: Users) {
     const body = {
       channelName: channel.channelName,
-      channelDescription: channel.description,
+      channelDescription: channel.channelDescription,
       user: user,
     };
     return this.http.post(this.url + 'channels', body);
   }
 
   // modifier un canal existant en BDD
-  patchChannel(channelId: string, channel: Channels) {
+  patchChannel(channel: Channels) {
     const body = {
-      channelId: channelId,
       channelName: channel.channelName,
-      channelDescription: channel.description,
+      channelDescription: channel.channelDescription,
       locked: channel.locked,
       user: channel.user,
     };
-    return this.http.patch(this.url + 'channels/' + channelId, body);
+    return this.http.patch(this.url + 'channels/' + channel.channelName, body);
   }
 }
