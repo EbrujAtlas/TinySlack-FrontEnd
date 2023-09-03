@@ -1,5 +1,5 @@
 <h3>{{ canal.channelName }}</h3>
-<div>{{ canal.description }}</div>
+<p>{{ canal.description }}</p>
 <p>Créateur: {{ canal.user.userName }}</p>
 <div *ngFor="let message of messagesFromChannel">
   <app-message [msg]="message"></app-message>

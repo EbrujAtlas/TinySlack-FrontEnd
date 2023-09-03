@@ -8,16 +8,9 @@ body,
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   background-color: aliceblue;
-
   padding: 0;
   color: midnightblue;
 }
-/* .wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-} */
 
 button {
   background-color: rgb(25, 25, 112);
@@ -63,14 +56,15 @@ button:hover,
 }
 .channel-list {
   grid-area: channel-list;
-
-  padding: 2%;
+  padding-left: 2%;
 }
 .footer {
   grid-area: footer;
 }
 .content {
   grid-area: content;
+  overflow: scroll;
+  max-height: 90%;
 }
 
 /* Media query pour les écrans de moins de 600px */

@@ -1,10 +1,8 @@
-<div class="channel-list">
-  <ul>
-    <div *ngFor="let channel of channels">
-      <li routerLink="/channel/{{ channel.channelName }}">
-        {{ channel.channelName }}
-      </li>
-    </div>
-  </ul>
-  <button class="plus-btn" (click)="onClick()">+</button>
-</div>
+<ul>
+  <div *ngFor="let channel of channels">
+    <li routerLink="/channel/{{ channel.channelName }}">
+      {{ channel.channelName }}
+    </li>
+  </div>
+</ul>
+<button class="plus-btn" (click)="onClick()">+</button>
