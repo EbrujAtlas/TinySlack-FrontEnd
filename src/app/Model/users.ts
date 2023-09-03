@@ -5,10 +5,3 @@ export interface Users {
   userMail: string;
   userName: string;
 }
-
-export const userInt: Users = {
-  userId: '',
-  password: '',
-  userMail: '',
-  userName: '',
-};

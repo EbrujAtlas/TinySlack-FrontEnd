@@ -30,7 +30,7 @@
     </div>
     <br />
     <div>
-      <label for="password">Password:</label>
+      <label for="password">Mot de passe:</label>
       <input type="password" id="password" formControlName="password" />
       <div *ngIf="signupForm.get('password')?.hasError('required')">
         <p>Mot de passe est requis.</p>
@@ -47,7 +47,7 @@
     </div>
     <br />
     <div>
-      <label for="passwordConfirm">Password confirm:</label>
+      <label for="passwordConfirm">Confirmation mot de passe:</label>
       <input
         type="password"
         id="passwordConfirm"
@@ -63,9 +63,11 @@
       </div>
     </div>
     <br />
-    <button class="form-button" type="submit" [disabled]="signupForm.invalid">
-      Inscription
-    </button>
+    <a routerLink="/profile">
+      <button class="form-button" type="submit" [disabled]="signupForm.invalid">
+        Inscription
+      </button>
+    </a>
   </form>
 
   <br />

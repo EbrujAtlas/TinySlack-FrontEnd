@@ -1,6 +1,6 @@
-<h1>Channels List</h1>
+<h2>Channels List</h2>
 <ul>
   <div *ngFor="let channel of channels">
-    <li>{{ channel.channelName }}</li>
+    <li><a routerLink="/channel/{{ channel.channelName }}">{{ channel.channelName }}</a></li>
   </div>
 </ul>

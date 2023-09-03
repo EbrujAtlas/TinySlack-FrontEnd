@@ -58,12 +58,30 @@ footer {
   margin-bottom: 0;
 }
 #content {
-  margin: 11% 0;
+  margin: 150px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
+
+section{
+  padding-left: 2%;
+}
+
 .deconnexion {
   background-color: aliceblue;
   color: rgb(25, 25, 112);
   border: none;
   border-radius: 10px;
   box-shadow: 5px 5px 5px rgb(25, 25, 112, 0.5);
+}
+
+
+/* Media query pour les écrans de moins de 600px */
+@media screen and (max-width: 426px) {
+  footer {
+    flex-direction: column;
+    align-items: center; /* Vous pouvez ajuster ceci selon vos besoins */
+    height: 15%;
+  }
 }

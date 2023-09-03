@@ -22,7 +22,7 @@ export class UserService {
   }
 
   addUser(user: Users): Observable<Users> {
-    return this.httpClient.post<Users>('http://localhost:8080/tinyslack/users', user);
+    return this.httpClient.post<Users>('http://localhost:8080/tinyslack/users', user );
   }
 
   deleteUser(userName: string | undefined ): Observable<Users>  {
@@ -33,7 +33,7 @@ export class UserService {
     return this.httpClient.patch<Users>('http://localhost:8080/tinyslack/users/' + userId, user);
   }
 
-  //Authenfication
+  //Authenfication gere les affichages en fonction du statut
   login() {
     this.isLoggedIn = true;
   }

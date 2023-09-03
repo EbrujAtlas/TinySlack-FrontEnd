@@ -5,6 +5,6 @@ export interface Messages {
   messageId: string;
   messageContent: string;
   messageDate: string;
-  channel: Channels | null;
-  user: Users | null;
+  channel: Channels; //| null;
+  user: Users; //| null;
 }

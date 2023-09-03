@@ -15,8 +15,6 @@ export class ProfileComponent {
   isInputVisible: boolean = false;
   updateForm: FormGroup;
   
-
-
   constructor(private fb: FormBuilder, private userService: UserService) {
     this.currentUser = this.userService.getCurrentUser();    
     this.updateForm = this.fb.group({

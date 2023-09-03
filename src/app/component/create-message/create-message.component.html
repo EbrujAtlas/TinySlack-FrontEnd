@@ -1,1 +1,14 @@
-<p>create-message works!</p>
+<form>
+  <label for="messageContent"></label>
+
+  <input
+    type="text"
+    id="messageContent"
+    name="ContenuDuMessage"
+    placeholder="Ecris ton message ici"
+    [(ngModel)]="message.messageContent"
+  />
+
+  <br>
+  <button (click)="AddMessage()">Envoyer</button>
+</form>
