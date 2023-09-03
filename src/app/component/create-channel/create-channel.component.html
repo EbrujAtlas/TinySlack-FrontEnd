@@ -26,13 +26,12 @@
     <p>Veuillez entrer une description.</p>
   </div>
   <br /><br />
-  <label for="protection">Souhaitez-vous vérouiller votre canal ?</label>
+  <label for="locked">Souhaitez-vous vérouiller votre canal ?</label>
   <input
     type="checkbox"
-    id="protection"
-    name="protection"
-    formControlName="protection"
-    (change)="lockChannel($event)"
+    id="locked"
+    name="locked"
+    formControlName="locked"
   />
   <br /><br />
   <button [disabled]="channelCreationForm.invalid">Créer un canal</button>

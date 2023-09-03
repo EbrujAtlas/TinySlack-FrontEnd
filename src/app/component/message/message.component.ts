@@ -16,7 +16,7 @@ export class MessageComponent {
       channelId: '',
       channelName: '',
       description: '',
-      protection: 0,
+      locked: 0,
       creationDate: new Date(2000-10-10),
       user: {
         userId: '',

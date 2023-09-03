@@ -29,10 +29,11 @@ export class ChannelService {
   }
 
   // ajouter un nouveau canal en BDD
-  postChannel(channel: Channels, user: Users) {
+  postChannel(channel: Channels, protection: number, user: Users) {
     const body = {
       channelName: channel.channelName,
       channelDescription: channel.description,
+      locked: protection,
       user: user
     };
     return this.http.post(this.url + 'channels', body);

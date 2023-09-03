@@ -4,7 +4,7 @@ export interface Channels {
   channelId: string;
   channelName: string;
   description: string;
-  protection: number;
+  locked: number;
   creationDate: Date;
   user: Users;
 }
