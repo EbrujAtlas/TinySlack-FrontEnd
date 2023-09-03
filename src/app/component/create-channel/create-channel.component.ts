@@ -30,30 +30,30 @@ export class CreateChannelComponent {
     this.channelCreationForm = this.fb.group({
       channelName: ['', [Validators.required, noSpacesValidator]],
       description: ['', [Validators.required]],
-      protection: [0, [Validators.required]]
+      locked: [false],
     });
   }
 
-  lockChannel(event: Event) {
-    const isChecked = (event.target as HTMLInputElement).checked;
-    const protectionControl = this.channelCreationForm.get('protection');
-    
-    if (protectionControl) {
-      if (isChecked) {
-        protectionControl.setValue(1);
-      } else {
-        protectionControl.setValue(0);
-      }
-    }
-  }
-
   addChannel(event: Event) {
+    const formData = this.channelCreationForm.value;
+    const isChecked = formData.locked;
+
+    // transformer la valeur de la case à cocher en une valeur à envoyer en BDD
+    const valueToSend = isChecked ? 1 : 0;
+
     // si l'utilisateur est connecté, on créé le canal
     if (this.currentUser) {
       this.cs
-        .postChannel(this.channelCreationForm.value, this.currentUser)
-        .subscribe();
-      alert('Votre canal a bien été créé');
+        .postChannel(
+          this.channelCreationForm.value,
+          valueToSend,
+          this.currentUser
+        )
+        .subscribe((response) => {
+          // Gérez la réponse du serveur
+          console.log('Réponse du serveur :', response);
+          alert('Votre canal a bien été créé');
+        });
     }
     // sinon, on le redirige vers la page de connexion
     else {
