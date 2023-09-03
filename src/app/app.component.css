@@ -2,7 +2,8 @@
   width: 100px;
   height: auto;
 }
-.icon-profile:hover {
+.icon-profile:hover,
+li:hover {
   transform: scale(1.2);
 }
 h1 {

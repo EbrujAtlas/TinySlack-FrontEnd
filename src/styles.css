@@ -63,8 +63,6 @@ button:hover,
 }
 .content {
   grid-area: content;
-  overflow: scroll;
-  max-height: 90%;
 }
 
 /* Media query pour les écrans de moins de 600px */
