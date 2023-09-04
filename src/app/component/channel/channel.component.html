@@ -2,8 +2,6 @@
 <p>{{ canal.channelDescription }}</p>
 <p>Créateur: {{ canal.user.userName }}</p>
 <div *ngIf="currentUser.userId == canal.user.userId">
-  <button (click)="onDisplayForm()">Modifier</button>
-  <ng-template *ngIf="displayForm"></ng-template>
   <app-change-channel [actualChannel]="canal"></app-change-channel>
   <button (click)="delete()">Supprimer</button>
 </div>

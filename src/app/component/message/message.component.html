@@ -2,8 +2,6 @@
   <p class="user-date">{{ msg.user.userName }} - {{ msg.messageDate }}</p>
   <p class="message">{{ msg.messageContent }}</p>
   <div *ngIf="currentUser.userId == msg.user.userId">
-    <button (click)="onDisplayForm()">Modifier</button>
-    <ng-template *ngIf="displayForm"></ng-template>
     <app-change-message [actualMessage]="msg"></app-change-message>
     <button (click)="delete()">Supprimer</button>
   </div>

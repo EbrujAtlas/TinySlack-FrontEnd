@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Channel } from 'src/app/Model/channel';
 import { Message } from 'src/app/Model/message';
 import { User } from 'src/app/Model/user';
@@ -23,6 +23,7 @@ export class ChannelComponent {
     private cs: ChannelService,
     private ms: MessageService,
     private us: UserService,
+    private activeRoute: ActivatedRoute,
     private route: Router
   ) {
     let user = us.getCurrentUser();
@@ -30,19 +31,24 @@ export class ChannelComponent {
   }
 
   ngOnInit(): void {
+    this.activeRoute.paramMap.subscribe((params: ParamMap) => {
+      let user = this.us.getCurrentUser();
+      if (user) {
+        this.currentUser = user;
+      }
+
+      // récupérer le name en URL pour récupérer le canal associé
+      let name = params.get('name');
+      if (name) {
+        this.cs.getChannelByName(name).subscribe((data: any) => {
+          this.canal = data;
+        });
+      }
+    });
     // récupérer les messages liés à ce canal
     this.ms.getMessagesFromChannel(this.canal).subscribe((messagesList) => {
       this.messagesFromChannel = messagesList;
     });
-  }
-
-  // au clic, change l'affiche du formulaire
-  onDisplayForm() {
-    if ((this.displayForm = false)) {
-      this.displayForm = true;
-    } else {
-      this.displayForm = false;
-    }
   }
 
   // supprimer le canal

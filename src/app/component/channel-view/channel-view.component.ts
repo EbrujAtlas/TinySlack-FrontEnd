@@ -4,6 +4,7 @@ import { Channel } from 'src/app/Model/channel';
 import { Message } from 'src/app/Model/message';
 import { User } from 'src/app/Model/user';
 import { ChannelService } from 'src/app/Service/channel.service';
+import { MessageService } from 'src/app/Service/message.service';
 import { UserService } from 'src/app/Service/user.service';
 
 @Component({
@@ -17,9 +18,11 @@ export class ChannelViewComponent {
   messagesFromChannel: Message[] = [];
 
   constructor(
+    private ar: ActivatedRoute,
     private cs: ChannelService,
-    private us: UserService,
-    private activeRoute: ActivatedRoute
+    private ms: MessageService,
+    private activeRoute: ActivatedRoute,
+    private us: UserService
   ) {}
 
   ngOnInit(): void {
