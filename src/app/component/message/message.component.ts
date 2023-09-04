@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Messages } from 'src/app/Model/messages';
+import { Users } from 'src/app/Model/users';
 import { MessageService } from 'src/app/Service/message.service';
+import { UserService } from 'src/app/Service/user.service';
 
 @Component({
   selector: 'app-message',
@@ -33,7 +35,22 @@ export class MessageComponent {
     } 
   };
 
-  constructor(private ms: MessageService) {
-    console.log(this.msg)
+  currentUser!: Users;
+  displayForm: boolean = false;
+
+  constructor(private ms: MessageService, private us: UserService) {
+    let user = us.getCurrentUser();
+    if (user) this.currentUser = user;
+  }
+
+  onDisplayForm() {
+    this.displayForm = true;
+  }
+
+  delete() {
+    this.ms.deleteMessage(this.msg).subscribe((response) => {
+      console.log(response);
+    });
+    alert('Message supprimé');
   }
 }

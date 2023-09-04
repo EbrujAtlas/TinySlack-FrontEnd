@@ -60,7 +60,6 @@ export class ChangeChannelComponent {
         creationDate: new Date(),
         user: this.currentUser,
       };
-      console.log(modifiedChannel);
       this.cs.patchChannel(modifiedChannel).subscribe((response) => {
         // Gérez la réponse du serveur
         console.log('Réponse du serveur :', response);

@@ -1,4 +1,12 @@
 <div>
-  <h3> {{msg.user.userName}} - {{msg.messageDate}} </h3>
-  <p>{{msg.messageContent}}</p>
+  <h3>{{ msg.user.userName }} - {{ msg.messageDate }}</h3>
+  <p>{{ msg.messageContent }}</p>
+
+  <div *ngIf="currentUser.userId == msg.user.userId">
+    <button (click)="onDisplayForm()">Modifier</button>
+    <ng-template *ngIf="displayForm"></ng-template>
+    <button (click)="delete()">Supprimer</button>
+  </div>
+  <app-change-message [actualMessage]="msg"></app-change-message
+    >
 </div>

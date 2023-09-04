@@ -36,6 +36,10 @@ export class MessageService {
       user: user,
       channel: channel,
     };
-    return this.http.post(this.url + 'messages', body); // requete http envers bdd
+    return this.http.post(this.url + 'messages', body);
+  }
+
+  deleteMessage(message: Messages) {
+    return this.http.delete(this.url + 'messages/' + message.messageId);
   }
 }
