@@ -6,6 +6,7 @@
     name="channelName"
     formControlName="channelName"
     placeholder="Nom du canal"
+    class="input is-small is-rounded"
   />
   <div *ngIf="channelCreationForm.get('channelName')?.hasError('required')">
     <p>Veuillez indiquer un nom de canal.</p>
@@ -21,8 +22,11 @@
     name="description"
     formControlName="channelDescription"
     placeholder="Description"
+    class="input is-small is-rounded"
   />
-  <div *ngIf="channelCreationForm.get('channelDescription')?.hasError('required')">
+  <div
+    *ngIf="channelCreationForm.get('channelDescription')?.hasError('required')"
+  >
     <p>Veuillez entrer une description.</p>
   </div>
   <br /><br />
