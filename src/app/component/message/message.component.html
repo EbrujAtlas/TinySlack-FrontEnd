@@ -2,7 +2,10 @@
   <p class="user-date">{{ msg.user.userName }} - {{ msg.messageDate }}</p>
   <p class="message">{{ msg.messageContent }}</p>
   <div *ngIf="currentUser.userId == msg.user.userId">
-    <app-change-message [actualMessage]="msg"></app-change-message>
+    <app-change-message
+      (Rafraichissement)="raffraichissement()"
+      [actualMessage]="msg"
+    ></app-change-message>
     <button (click)="delete()">Supprimer</button>
   </div>
 </div>

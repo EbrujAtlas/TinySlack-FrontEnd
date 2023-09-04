@@ -17,9 +17,7 @@ export class UserService {
 
   // récupérer tous les utilisateurs
   getUsers(): Observable<User[]> {
-    return this.httpClient.get<User[]>(
-      'http://localhost:8080/tinyslack/users'
-    );
+    return this.httpClient.get<User[]>('http://localhost:8080/tinyslack/users');
   }
 
   // récupérer un utilisateur par son nom
@@ -38,9 +36,9 @@ export class UserService {
   }
 
   // modifier un utilisateur existant en BDD
-  updateUser(userId: string, user: User): Observable<User> {
+  updateUser(userName: string, user: User): Observable<User> {
     return this.httpClient.patch<User>(
-      'http://localhost:8080/tinyslack/users/' + userId,
+      'http://localhost:8080/tinyslack/users/' + userName,
       user
     );
   }

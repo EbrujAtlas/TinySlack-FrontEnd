@@ -12,7 +12,7 @@ export class ChannelService {
   options = {
     headers: new HttpHeaders().set(
       'Content-Type',
-      'application/x-www-form-urlencoded',
+      'application/x-www-form-urlencoded'
     ),
   };
 
@@ -42,6 +42,7 @@ export class ChannelService {
   // modifier un canal existant en BDD
   patchChannel(channel: Channel) {
     const body = {
+      channelId: channel.channelId,
       channelName: channel.channelName,
       channelDescription: channel.channelDescription,
       user: channel.user,

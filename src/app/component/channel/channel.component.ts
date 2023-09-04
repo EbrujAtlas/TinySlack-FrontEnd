@@ -12,7 +12,6 @@ import { UserService } from 'src/app/Service/user.service';
   templateUrl: './channel.component.html',
   styleUrls: ['./channel.component.css'],
 })
-
 export class ChannelComponent {
   @Input() canal!: Channel;
   currentUser!: User;
@@ -46,11 +45,14 @@ export class ChannelComponent {
       }
     });
     // récupérer les messages liés à ce canal
+    this.refresh(); //appel fonction qui permet de refresh les messages
+  }
+
+  refresh() {
     this.ms.getMessagesFromChannel(this.canal).subscribe((messagesList) => {
       this.messagesFromChannel = messagesList;
     });
   }
-
   // supprimer le canal
   delete() {
     this.cs.deleteChannel(this.canal).subscribe((response) => {

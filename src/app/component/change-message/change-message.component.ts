@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Message } from 'src/app/Model/message';
@@ -12,6 +12,7 @@ import { UserService } from 'src/app/Service/user.service';
   styleUrls: ['./change-message.component.css'],
 })
 export class ChangeMessageComponent {
+  @Output() Rafraichissement = new EventEmitter();
   @Input() actualMessage!: Message;
 
   messageModificationForm: FormGroup;
@@ -51,8 +52,10 @@ export class ChangeMessageComponent {
       console.log(modifiedmessage);
       this.ms.patchMessage(modifiedmessage).subscribe((response) => {
         console.log('Réponse du serveur :', response);
-        alert('Votre message a bien été modifié');
-        this.route.navigate(['/channel/' + this.actualMessage.channel.channelName])
+        this.Rafraichissement.emit();
+        this.route.navigate([
+          '/channel/' + this.actualMessage.channel.channelName,
+        ]);
       });
     }
     // sinon, on le redirige vers la page de connexion

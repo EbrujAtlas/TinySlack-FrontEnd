@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Channel } from 'src/app/Model/channel';
 import { Message } from 'src/app/Model/message';
@@ -13,6 +13,7 @@ import { UserService } from 'src/app/Service/user.service';
   styleUrls: ['./create-message.component.css'],
 })
 export class CreateMessageComponent {
+  @Output() Rafraichissement = new EventEmitter();
   message: Message = {
     messageId: '',
     messageContent: '',
@@ -65,10 +66,10 @@ export class CreateMessageComponent {
         .postMessage(
           this.message.messageContent,
           this.currentUser,
-          this.canalActuel,
+          this.canalActuel
         )
         .subscribe();
-        alert('Votre message a bien été envoyé');
+      this.Rafraichissement.emit();
     }
     // sinon, on le redirige vers la page de connexion
     else {

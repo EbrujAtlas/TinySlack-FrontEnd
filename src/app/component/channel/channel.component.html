@@ -7,6 +7,6 @@
 </div>
 <div class="scroll"></div>
 <div *ngFor="let message of messagesFromChannel">
-  <app-message [msg]="message"></app-message>
+  <app-message (Rafraichissement)="refresh()" [msg]="message"></app-message>
 </div>
-<app-create-message></app-create-message>
+<app-create-message (Rafraichissement)="refresh()"></app-create-message>

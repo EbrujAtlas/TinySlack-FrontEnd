@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Message } from 'src/app/Model/message';
 import { User } from 'src/app/Model/user';
 import { MessageService } from 'src/app/Service/message.service';
@@ -37,7 +37,7 @@ export class MessageComponent {
 
   currentUser!: User;
   displayForm: boolean = false;
-
+  @Output() Rafraichissement = new EventEmitter();
   constructor(private ms: MessageService, private us: UserService) {
     let user = us.getCurrentUser();
     if (user) this.currentUser = user;
@@ -47,6 +47,9 @@ export class MessageComponent {
     this.ms.deleteMessage(this.msg).subscribe((response) => {
       console.log(response);
     });
-    alert('Message supprimé');
+    this.raffraichissement();
+  }
+  raffraichissement() {
+    this.Rafraichissement.emit();
   }
 }
