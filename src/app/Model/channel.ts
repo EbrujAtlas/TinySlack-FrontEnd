@@ -1,10 +1,10 @@
-import { Users } from './users';
+import { User } from './user';
 
-export interface Channels {
+export interface Channel {
   channelId: string;
   channelName: string;
   description: string;
   protection: number;
   creationDate: Date;
-  user: Users;
+  user: User;
 }

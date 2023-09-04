@@ -1,41 +1,50 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Users } from '../Model/users';
+import { User } from '../Model/user';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
   //Déclaration de variable
   private isLoggedIn: boolean = false;
-  private currentUser: Users | null = null;
-  private users: Users[] = [];
+  private currentUser: User | null = null;
+  private users: User[] = [];
 
   //Constructeur
-  constructor(private httpClient: HttpClient,) { }
-
+  constructor(private httpClient: HttpClient) {}
 
   //Requete http
-  getUsers(): Observable<Users[]> {
-    return this.httpClient.get<Users[]>('http://localhost:8080/tinyslack/users');
+  getUsers(): Observable<User[]> {
+    return this.httpClient.get<User[]>('http://localhost:8080/tinyslack/users');
   }
 
   // Récupérer l'utilisateur par son nom
   getUserByName(userName: string) {
-    return this.httpClient.get('http://localhost:8080/tinyslack/users/' + userName);
+    return this.httpClient.get(
+      'http://localhost:8080/tinyslack/users/' + userName,
+    );
   }
 
-  addUser(user: Users): Observable<Users> {
-    return this.httpClient.post<Users>('http://localhost:8080/tinyslack/users', user );
+  addUser(user: User): Observable<User> {
+    return this.httpClient.post<User>(
+      'http://localhost:8080/tinyslack/users',
+      user,
+    );
   }
 
-  deleteUser(userName: string | undefined ): Observable<Users>  {
-    return this.httpClient.delete<Users>('http://localhost:8080/tinyslack/users/' + userName);
+  deleteUser(userName: string | undefined): Observable<User> {
+    return this.httpClient.delete<User>(
+      'http://localhost:8080/tinyslack/users/' + userName,
+    );
   }
 
-  updateUser(userId: string, user: Users ): Observable<Users>  {
-    return this.httpClient.patch<Users>('http://localhost:8080/tinyslack/users/' + userId, user);
+  updateUser(userId: string, user: User): Observable<User> {
+    return this.httpClient.patch<User>(
+      'http://localhost:8080/tinyslack/users/' + userId,
+      user,
+    );
   }
 
   //Authenfication gere les affichages en fonction du statut
@@ -52,30 +61,30 @@ export class UserService {
   }
 
   //setCurrentUser qui va permettre de trouver l'user actuellement connecté
-  setCurrentUser(user: Users | null) {
+  setCurrentUser(user: User | null) {
     this.currentUser = user;
   }
 
-  getCurrentUser(): Users | null {
+  getCurrentUser(): User | null {
     return this.currentUser;
   }
 
-
   //pour charger les users bdd dans signup
   loadUsers() {
-    this.httpClient.get<Users[]>('http://localhost:8080/tinyslack/users').subscribe((data) => {
-      this.users = data;
-    });
+    this.httpClient
+      .get<User[]>('http://localhost:8080/tinyslack/users')
+      .subscribe((data) => {
+        this.users = data;
+      });
     console.log(this.users);
   }
 
   //permet de vérifier si l'user du signup utilise un nom/mail déjà utilisé en bdd
-  getUserByUserName(userName: string): Users | undefined {
+  getUserByUserName(userName: string): User | undefined {
     return this.users.find((user) => user.userName === userName);
   }
 
-  getUserByUserEmail(email: string): Users | undefined {
+  getUserByUserEmail(email: string): User | undefined {
     return this.users.find((user) => user.userMail === email);
   }
 }
-

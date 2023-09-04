@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Messages } from 'src/app/Model/messages';
+import { Message } from 'src/app/Model/message';
 import { MessageService } from 'src/app/Service/message.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { MessageService } from 'src/app/Service/message.service';
   styleUrls: ['./message.component.css'],
 })
 export class MessageComponent {
-  @Input() msg: Messages = {
+  @Input() msg: Message = {
     messageId: '',
     messageContent: '',
     messageDate: '',
@@ -17,23 +17,23 @@ export class MessageComponent {
       channelName: '',
       description: '',
       protection: 0,
-      creationDate: new Date(2000-10-10),
+      creationDate: new Date(2000 - 10 - 10),
       user: {
         userId: '',
         password: '',
         userMail: '',
         userName: '',
-      }
+      },
     },
     user: {
       userId: '',
       password: '',
       userMail: '',
       userName: '',
-    } 
+    },
   };
 
   constructor(private ms: MessageService) {
-    console.log(this.msg)
+    console.log(this.msg);
   }
 }

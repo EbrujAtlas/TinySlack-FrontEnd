@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Messages } from '../Model/messages';
-import { Channels } from '../Model/channels';
+import { Message } from '../Model/message';
+import { Channel } from '../Model/channel';
 import { Observable } from 'rxjs';
-import { Users } from '../Model/users';
+import { User } from '../Model/user';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,7 @@ export class MessageService {
   options = {
     headers: new HttpHeaders().set(
       'Content-Type',
-      'application/x-www-form-urlencoded'
+      'application/x-www-form-urlencoded',
     ),
   };
 
@@ -24,13 +24,13 @@ export class MessageService {
     return this.http.get(this.url + 'messages');
   }
 
-  getMessagesFromChannel(channel: Channels): Observable<Messages[] | any> {
+  getMessagesFromChannel(channel: Channel): Observable<Message[] | any> {
     return this.http.get(
-      this.url + 'channels/' + channel.channelName + '/messages'
+      this.url + 'channels/' + channel.channelName + '/messages',
     );
   }
 
-  postMessage(messageContent: string, user: Users, channel: Channels) {
+  postMessage(messageContent: string, user: User, channel: Channel) {
     const body = {
       messageContent: messageContent,
       user: user,

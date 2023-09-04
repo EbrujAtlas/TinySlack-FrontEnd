@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Channels } from 'src/app/Model/channels';
-import { Messages } from 'src/app/Model/messages';
+import { Channel } from 'src/app/Model/channel';
+import { Message } from 'src/app/Model/message';
 import { ChannelService } from 'src/app/Service/channel.service';
 import { MessageService } from 'src/app/Service/message.service';
 
@@ -11,14 +11,14 @@ import { MessageService } from 'src/app/Service/message.service';
   styleUrls: ['./channel.component.css'],
 })
 export class ChannelComponent {
-  canal!: Channels;
+  canal!: Channel;
 
-  messagesFromChannel: Messages[] = [];
+  messagesFromChannel: Message[] = [];
 
   constructor(
     private ar: ActivatedRoute,
     private cs: ChannelService,
-    private ms: MessageService
+    private ms: MessageService,
   ) {
     // récupérer le name qui est dans l'URL pour afficher le channel correspondant
     let name = this.ar.snapshot.params['name'];

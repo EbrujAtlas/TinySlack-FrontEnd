@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Channels } from '../Model/channels';
+import { Channel } from '../Model/channel';
 
 @Injectable({
   providedIn: 'root',
@@ -11,10 +11,10 @@ export class ChannelService {
   options = {
     headers: new HttpHeaders().set(
       'Content-Type',
-      'application/x-www-form-urlencoded'
+      'application/x-www-form-urlencoded',
     ),
   };
-  
+
   constructor(private http: HttpClient) {}
 
   // récupérer tous les canaux en BDD
@@ -28,7 +28,7 @@ export class ChannelService {
   }
 
   // ajouter un nouveau canal en BDD
-  postChannel(channel: Channels) {
+  postChannel(channel: Channel) {
     const body = {
       channelName: channel.channelName,
       channelDescription: channel.description,

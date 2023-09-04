@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Users } from 'src/app/Model/users';
+import { User } from 'src/app/Model/user';
 import { UserService } from 'src/app/Service/user.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
   loginForm: FormGroup;
@@ -17,21 +17,25 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private route: Router
+    private route: Router,
   ) {
     this.loginForm = this.fb.group({
       userMail: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
     });
   }
 
   onSubmit(event: Event) {
     if (this.loginForm.valid) {
-      const formValue: Users = this.loginForm.value;
-      
-      this.userSubscription = this.userService.getUsers().subscribe(users => {
-        const user = users.find(user => user.userMail === formValue.userMail && user.password === formValue.password);
-        
+      const formValue: User = this.loginForm.value;
+
+      this.userSubscription = this.userService.getUsers().subscribe((users) => {
+        const user = users.find(
+          (user) =>
+            user.userMail === formValue.userMail &&
+            user.password === formValue.password,
+        );
+
         if (user) {
           this.userService.login();
           this.userService.setCurrentUser(user);

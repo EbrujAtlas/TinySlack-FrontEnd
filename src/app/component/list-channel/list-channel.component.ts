@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Channels } from 'src/app/Model/channels';
+import { Channel } from 'src/app/Model/channel';
 import { ChannelService } from 'src/app/Service/channel.service';
 
 @Component({
@@ -9,9 +9,12 @@ import { ChannelService } from 'src/app/Service/channel.service';
   styleUrls: ['./list-channel.component.css'],
 })
 export class ListChannelComponent {
-  channels: Channels[] = [];
+  channels: Channel[] = [];
 
-  constructor(private cs: ChannelService, private route: Router) {
+  constructor(
+    private cs: ChannelService,
+    private route: Router,
+  ) {
     // récupérer tous les canaux en BDD
     this.cs.getChannels().subscribe((data: any) => {
       this.channels = data;
@@ -19,6 +22,6 @@ export class ListChannelComponent {
   }
 
   onClick() {
-    this.route.navigate(['/newchannel'])
+    this.route.navigate(['/newchannel']);
   }
 }
