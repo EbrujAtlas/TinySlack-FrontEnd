@@ -38,4 +38,12 @@ export class MessageService {
     };
     return this.http.post(this.url + 'messages', body); // requete http envers bdd
   }
+  patchMessage(message: Messages) {
+    const body = {
+      messageContent: message.messageContent,
+      user: message.channel,
+      channel: message.user,
+    };
+    return this.http.patch(this.url + 'channels/' + message.messageId, body);
+  }
 }
