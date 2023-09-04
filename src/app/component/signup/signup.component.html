@@ -3,7 +3,13 @@
   <form [formGroup]="signupForm" (submit)="onSubmit($event)">
     <div>
       <label for="userName">Nom:</label>
-      <input type="text" id="username" formControlName="userName" />
+      <input
+        type="text"
+        id="userName"
+        formControlName="userName"
+        class="input is-small is-rounded"
+      />
+
       <div *ngIf="signupForm.get('userName')?.hasError('required')">
         <p>Votre nom est requis.</p>
       </div>
@@ -20,7 +26,12 @@
     <br />
     <div>
       <label for="userMail">Email:</label>
-      <input type="email" id="userMail" formControlName="userMail" />
+      <input
+        type="email"
+        id="userMail"
+        formControlName="userMail"
+        class="input is-small is-rounded"
+      />
       <div *ngIf="signupForm.get('userMail')?.hasError('required')">
         <p>Email est requis.</p>
       </div>
@@ -31,7 +42,12 @@
     <br />
     <div>
       <label for="password">Mot de passe:</label>
-      <input type="password" id="password" formControlName="password" />
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+        class="input is-small is-rounded"
+      />
       <div *ngIf="signupForm.get('password')?.hasError('required')">
         <p>Mot de passe est requis.</p>
       </div>
@@ -52,6 +68,7 @@
         type="password"
         id="passwordConfirm"
         formControlName="passwordConfirm"
+        class="input is-small is-rounded"
       />
       <div
         *ngIf="
@@ -63,11 +80,10 @@
       </div>
     </div>
     <br />
-    <a routerLink="/profile">
-      <button class="form-button" type="submit" [disabled]="signupForm.invalid">
-        Inscription
-      </button>
-    </a>
+
+    <button class="form-button" type="submit" [disabled]="signupForm.invalid">
+      Inscription
+    </button>
   </form>
 
   <br />

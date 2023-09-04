@@ -1,7 +1,7 @@
 <h3>{{ canal.channelName }}</h3>
 <p>{{ canal.description }}</p>
 <p>Créateur: {{ canal.user.userName }}</p>
-<div class="scroll">
+<div>
   <div *ngFor="let message of messagesFromChannel">
     <app-message [msg]="message"></app-message>
   </div>
