@@ -42,4 +42,12 @@ export class MessageService {
   deleteMessage(message: Messages) {
     return this.http.delete(this.url + 'messages/' + message.messageId);
   }
+  patchMessage(message: Messages) {
+    const body = {
+      messageContent: message.messageContent,
+      user: message.channel,
+      channel: message.user,
+    };
+    return this.http.patch(this.url + 'channels/' + message.messageId, body);
+  }
 }
