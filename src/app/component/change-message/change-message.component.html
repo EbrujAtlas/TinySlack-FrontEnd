@@ -1,0 +1,16 @@
+<form [formGroup]="messageModificationForm" (submit)="updatemessage($event)">
+  <input
+    type="text"
+    id="messageContent"
+    name="messageContent"
+    formControlName="messageContent"
+    placeholder="Ecrivez votre message"
+  />
+  <div
+    *ngIf="messageModificationForm.get('messageContent')?.hasError('required')"
+  >
+    <p>Ecrivez un message</p>
+  </div>
+  <br /><br />
+  <button [disabled]="messageModificationForm.invalid">Modifier</button>
+</form>

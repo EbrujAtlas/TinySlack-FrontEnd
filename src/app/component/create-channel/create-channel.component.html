@@ -1,0 +1,30 @@
+<form [formGroup]="channelCreationForm" (submit)="addChannel($event)">
+  <label for="channelName"></label>
+  <input
+    type="text"
+    id="channelName"
+    name="channelName"
+    formControlName="channelName"
+    placeholder="Nom du canal"
+  />
+  <div *ngIf="channelCreationForm.get('channelName')?.hasError('required')">
+    <p>Veuillez indiquer un nom de canal.</p>
+  </div>
+  <div *ngIf="channelCreationForm.get('channelName')?.hasError('hasSpaces')">
+    <p>Veuillez ne pas utiliser d'espace.</p>
+  </div>
+  <br /><br />
+  <label for="description"></label>
+  <input
+    type="text"
+    id="description"
+    name="description"
+    formControlName="channelDescription"
+    placeholder="Description"
+  />
+  <div *ngIf="channelCreationForm.get('channelDescription')?.hasError('required')">
+    <p>Veuillez entrer une description.</p>
+  </div>
+  <br /><br />
+  <button [disabled]="channelCreationForm.invalid">Créer un canal</button>
+</form>

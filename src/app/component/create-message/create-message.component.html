@@ -1,0 +1,12 @@
+<form>
+  <label for="messageContent"></label>
+  <input
+    type="text"
+    id="messageContent"
+    name="ContenuDuMessage"
+    placeholder="Ecrivez votre message ici"
+    [(ngModel)]="message.messageContent"
+  />
+
+  <button class="btn" (click)="addMessage()">Envoyer</button>
+</form>

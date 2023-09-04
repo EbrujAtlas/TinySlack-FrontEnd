@@ -1,0 +1,92 @@
+<div *ngIf="currentUser" class="center">
+  <h2>Bonjour, {{ currentUser.userName }}</h2>
+  <h3>Voici vos informations personnelles:</h3>
+  <div *ngIf="!isInputVisible">
+    <p>Votre nom: {{ currentUser.userName }}</p>
+    <p>Votre adresse mail: {{ currentUser.userMail }}</p>
+    <p>Votre mot de passe: {{ currentUser.password }}</p>
+    <button (click)="visibilityInput()">Modifier votre profil</button>
+  </div>
+  <form
+    *ngIf="isInputVisible"
+    [formGroup]="updateForm"
+    (submit)="onSubmit($event)"
+  >
+    <div>
+      <label for="userName">Votre Nom :</label>
+      <input
+        type="text"
+        id="userName"
+        formControlName="userName"
+        class="input is-small is-rounded"
+      />
+      <div *ngIf="updateForm.get('userName')?.hasError('maxlength')">
+        <p>
+          Votre nom doit faire moins de
+          {{
+            updateForm.get("userName")?.errors?.["maxlength"]?.requiredLength
+          }}
+          caractères.
+        </p>
+      </div>
+    </div>
+    <br />
+    <div>
+      <label for="userMail">Votre email :</label>
+      <input
+        type="email"
+        id="userMail"
+        formControlName="userMail"
+        class="input is-small is-rounded"
+      />
+      <div *ngIf="updateForm.get('userMail')?.hasError('userMail')">
+        <p>Email invalide.</p>
+      </div>
+    </div>
+    <br />
+    <div>
+      <label for="password">Votre mot de passe :</label>
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+        class="input is-small is-rounded"
+      />
+      <div *ngIf="updateForm.get('password')?.hasError('minlength')">
+        <p>
+          Mot de passe doit avoir au moins
+          {{
+            updateForm.get("password")?.errors?.["minlength"]?.requiredLength
+          }}
+          caractères.
+        </p>
+      </div>
+    </div>
+    <br />
+    <button class="form-button" type="submit" [disabled]="updateForm.invalid">
+      Appliquer les modifications
+    </button>
+    <br />
+  </form>
+
+  <div *ngIf="currentUser" id="checkbox-delete" class="center">
+    <input
+      class="Visible"
+      type="checkbox"
+      name="delete"
+      id="delete"
+      (change)="changeEvent($event)"
+    />
+    <label for="delete"
+      >Souhaitez-vous supprimer votre profil ? Cochez si oui</label
+    >
+    <br />
+    <button (click)="deleteUser()" [disabled]="toggleBool">
+      Supprimer mon profil
+    </button>
+  </div>
+</div>
+
+<div *ngIf="!currentUser">
+  <p>Aucun utilisateur connecté.</p>
+</div>

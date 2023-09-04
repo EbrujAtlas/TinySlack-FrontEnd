@@ -1,0 +1,12 @@
+<h3>{{ canal.channelName }}</h3>
+<p>{{ canal.channelDescription }}</p>
+<p>Créateur: {{ canal.user.userName }}</p>
+<div *ngIf="currentUser.userId == canal.user.userId">
+  <app-change-channel [actualChannel]="canal"></app-change-channel>
+  <button (click)="delete()">Supprimer</button>
+</div>
+<div class="scroll"></div>
+<div *ngFor="let message of messagesFromChannel">
+  <app-message [msg]="message"></app-message>
+</div>
+<app-create-message></app-create-message>
