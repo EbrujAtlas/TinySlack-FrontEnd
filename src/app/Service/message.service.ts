@@ -14,7 +14,7 @@ export class MessageService {
   options = {
     headers: new HttpHeaders().set(
       'Content-Type',
-      'application/x-www-form-urlencoded'
+      'application/x-www-form-urlencoded',
     ),
   };
 
@@ -28,7 +28,7 @@ export class MessageService {
   // récupérer tous les messages d'un canal
   getMessagesFromChannel(channel: Channel): Observable<Message[] | any> {
     return this.http.get(
-      this.url + 'channels/' + channel.channelName + '/messages'
+      this.url + 'channels/' + channel.channelName + '/messages',
     );
   }
 

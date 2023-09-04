@@ -25,14 +25,14 @@ export class MessageComponent {
         password: '',
         userMail: '',
         userName: '',
-      }
+      },
     },
     user: {
       userId: '',
       password: '',
       userMail: '',
       userName: '',
-    } 
+    },
   };
 
   currentUser!: User;
@@ -41,10 +41,6 @@ export class MessageComponent {
   constructor(private ms: MessageService, private us: UserService) {
     let user = us.getCurrentUser();
     if (user) this.currentUser = user;
-  }
-
-  onDisplayForm() {
-    this.displayForm = true;
   }
 
   delete() {

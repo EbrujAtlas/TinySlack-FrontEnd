@@ -11,7 +11,9 @@ body {
   padding: 0;
   color: midnightblue;
 }
-
+label {
+  display: block;
+}
 button {
   background-color: rgb(25, 25, 112);
   color: rgb(240, 248, 255);
@@ -61,6 +63,19 @@ button:hover,
 .content {
   grid-area: content;
   text-align: center;
+  overflow: auto;
+  max-height: 80%;
+}
+.content h1,
+.content h2,
+.content h3 {
+  color: midnightblue;
+}
+.content::-webkit-scrollbar {
+  display: none;
+}
+.is-small {
+  max-width: 250px;
 }
 
 /* Media query pour les écrans de moins de 600px */

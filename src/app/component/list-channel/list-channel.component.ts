@@ -11,7 +11,10 @@ import { ChannelService } from 'src/app/Service/channel.service';
 export class ListChannelComponent {
   channels: Channel[] = [];
 
-  constructor(private cs: ChannelService, private route: Router) {
+  constructor(
+    private cs: ChannelService,
+    private route: Router,
+  ) {
     // récupérer tous les canaux en BDD
     this.cs.getChannels().subscribe((data: any) => {
       this.channels = data;
@@ -19,6 +22,6 @@ export class ListChannelComponent {
   }
 
   onClick() {
-    this.route.navigate(['/newchannel'])
+    this.route.navigate(['/newchannel']);
   }
 }

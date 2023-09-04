@@ -52,7 +52,7 @@ export class ProfileComponent {
         (error: HttpErrorResponse) => {
           alert('Une erreur est survenue lors de la modification');
           console.error('Erreur lors de la modification :', error);
-        }
+        },
       );
     } else {
       alert('Le formulaire de la modification est invalide');

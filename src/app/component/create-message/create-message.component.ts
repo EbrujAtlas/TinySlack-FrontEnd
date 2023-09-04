@@ -65,7 +65,7 @@ export class CreateMessageComponent {
         .postMessage(
           this.message.messageContent,
           this.currentUser,
-          this.canalActuel
+          this.canalActuel,
         )
         .subscribe();
         alert('Votre message a bien été envoyé');

@@ -65,7 +65,7 @@ export class SignupComponent {
           },
           (error: HttpErrorResponse) => {
             console.error("Erreur lors de l'inscription :", error);
-          }
+          },
         );
       }
     } else {

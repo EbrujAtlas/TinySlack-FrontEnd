@@ -12,7 +12,7 @@ export class ChannelService {
   options = {
     headers: new HttpHeaders().set(
       'Content-Type',
-      'application/x-www-form-urlencoded'
+      'application/x-www-form-urlencoded',
     ),
   };
 

@@ -14,7 +14,12 @@
   >
     <div>
       <label for="userName">Votre Nom :</label>
-      <input type="text" id="userName" formControlName="userName" />
+      <input
+        type="text"
+        id="userName"
+        formControlName="userName"
+        class="input is-small is-rounded"
+      />
       <div *ngIf="updateForm.get('userName')?.hasError('maxlength')">
         <p>
           Votre nom doit faire moins de
@@ -28,7 +33,12 @@
     <br />
     <div>
       <label for="userMail">Votre email :</label>
-      <input type="email" id="userMail" formControlName="userMail" />
+      <input
+        type="email"
+        id="userMail"
+        formControlName="userMail"
+        class="input is-small is-rounded"
+      />
       <div *ngIf="updateForm.get('userMail')?.hasError('userMail')">
         <p>Email invalide.</p>
       </div>
@@ -36,7 +46,12 @@
     <br />
     <div>
       <label for="password">Votre mot de passe :</label>
-      <input type="password" id="password" formControlName="password" />
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+        class="input is-small is-rounded"
+      />
       <div *ngIf="updateForm.get('password')?.hasError('minlength')">
         <p>
           Mot de passe doit avoir au moins
@@ -69,7 +84,6 @@
     <button (click)="deleteUser()" [disabled]="toggleBool">
       Supprimer mon profil
     </button>
-    <br />
   </div>
 </div>
 
