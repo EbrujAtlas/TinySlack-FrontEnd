@@ -16,13 +16,13 @@ export class CreateMessageComponent {
   message: Messages = {
     messageId: '',
     messageContent: '',
-    messageDate: '',
+    messageDate: new Date(),
     channel: {
       channelId: '',
       channelName: '',
       channelDescription: '',
       locked: 0,
-      creationDate: new Date(2000 - 10 - 10),
+      creationDate: new Date(),
       user: {
         userId: '',
         password: '',

@@ -12,9 +12,9 @@ import { UserService } from 'src/app/Service/user.service';
   styleUrls: ['./change-message.component.css'],
 })
 export class ChangeMessageComponent {
-  messageModificationForm: FormGroup;
+  @Input() actualMessage!: Messages;
 
-  @Input() actualmessage!: Messages;
+  messageModificationForm: FormGroup;
   currentUser: Users | null;
 
   constructor(
@@ -34,27 +34,28 @@ export class ChangeMessageComponent {
 
   ngOnInit(): void {
     this.messageModificationForm.controls['messageContent'].setValue(
-      this.actualmessage.messageContent
+      this.actualMessage.messageContent
     );
   }
 
   updatemessage(event: Event) {
+    // si l'utilisateur est connecté et qu'il est le créateur du message, on effectue la modification du message
     if (this.currentUser) {
       const modifiedmessage = {
-        messageId: '',
+        messageId: this.actualMessage.messageId,
         messageContent: this.messageModificationForm.value.messageContent,
         messageDate: new Date(),
-        user: this.actualmessage.user,
-        channel: this.actualmessage.channel,
+        user: this.actualMessage.user,
+        channel: this.actualMessage.channel,
       };
       console.log(modifiedmessage);
       this.ms.patchMessage(modifiedmessage).subscribe((response) => {
-        // Gérez la réponse du serveur
         console.log('Réponse du serveur :', response);
         alert('Votre message a bien été modifié');
+        this.route.navigate(['/channels' + this.actualMessage.channel.channelName])
       });
     }
-    // sinon, on le redirige vers la page de connexion si ce n'est pas l'utilisateur actuel
+    // sinon, on le redirige vers la page de connexion
     else {
       alert('Veuillez vous connecter');
       this.route.navigate(['/login']);

@@ -13,7 +13,7 @@ export class MessageComponent {
   @Input() msg: Messages = {
     messageId: '',
     messageContent: '',
-    messageDate: '',
+    messageDate: new Date(),
     channel: {
       channelId: '',
       channelName: '',
