@@ -28,7 +28,6 @@ export class ChannelViewComponent {
   ngOnInit(): void {
     this.activeRoute.paramMap.subscribe((params: ParamMap) => {
       let user = this.us.getCurrentUser();
-      console.log(user);
       if (user) {
         this.currentUser = user;
       }
@@ -38,7 +37,6 @@ export class ChannelViewComponent {
       if (name) {
         this.cs.getChannelByName(name).subscribe((data: any) => {
           this.canal = data;
-          console.log(this.canal);
         });
       }
     });

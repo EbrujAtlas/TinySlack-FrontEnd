@@ -52,7 +52,7 @@ export class ChangeMessageComponent {
       this.ms.patchMessage(modifiedmessage).subscribe((response) => {
         console.log('Réponse du serveur :', response);
         alert('Votre message a bien été modifié');
-        this.route.navigate(['/channels' + this.actualMessage.channel.channelName])
+        this.route.navigate(['/channel/' + this.actualMessage.channel.channelName])
       });
     }
     // sinon, on le redirige vers la page de connexion

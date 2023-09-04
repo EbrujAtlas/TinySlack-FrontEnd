@@ -41,9 +41,11 @@ export class MessageService {
 
   patchMessage(message: Messages) {
     const body = {
+      messageId: message.messageId,
       messageContent: message.messageContent,
-      user: message.channel,
-      channel: message.user,
+      messageDate: message.messageDate,
+      user: message.user,
+      channel: message.channel,
     };
     return this.http.patch(this.url + 'messages/' + message.messageId, body);
   }
