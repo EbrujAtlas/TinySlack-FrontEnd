@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Channels } from 'src/app/Model/channels';
-import { Messages } from 'src/app/Model/messages';
-import { Users } from 'src/app/Model/users';
+import { Channel } from 'src/app/Model/channel';
+import { Message } from 'src/app/Model/message';
+import { User } from 'src/app/Model/user';
 import { ChannelService } from 'src/app/Service/channel.service';
-import { MessageService } from 'src/app/Service/message.service';
 import { UserService } from 'src/app/Service/user.service';
 
 @Component({
@@ -13,16 +12,14 @@ import { UserService } from 'src/app/Service/user.service';
   styleUrls: ['./channel-view.component.css'],
 })
 export class ChannelViewComponent {
-  canal!: Channels;
-  currentUser!: Users;
-  messagesFromChannel: Messages[] = [];
+  canal!: Channel;
+  currentUser!: User;
+  messagesFromChannel: Message[] = [];
 
   constructor(
-    private ar: ActivatedRoute,
     private cs: ChannelService,
-    private ms: MessageService,
-    private activeRoute: ActivatedRoute,
-    private us: UserService
+    private us: UserService,
+    private activeRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {

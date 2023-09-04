@@ -6,7 +6,7 @@ import {
   AbstractControl,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Users } from 'src/app/Model/users';
+import { User } from 'src/app/Model/user';
 import { ChannelService } from 'src/app/Service/channel.service';
 import { UserService } from 'src/app/Service/user.service';
 
@@ -18,7 +18,7 @@ import { UserService } from 'src/app/Service/user.service';
 export class CreateChannelComponent {
   channelCreationForm: FormGroup;
 
-  currentUser: Users | null;
+  currentUser: User | null;
 
   constructor(
     private fb: FormBuilder,

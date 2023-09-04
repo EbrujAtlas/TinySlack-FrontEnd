@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Users } from './Model/users';
+import { User } from './Model/user';
 import { UserService } from './Service/user.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { UserService } from './Service/user.service';
 })
 export class AppComponent {
   title = 'TinySlack';
-  currentUser: Users | null;
+  currentUser: User | null;
 
   constructor(public userService: UserService) {
     this.currentUser = this.userService.getCurrentUser();
@@ -18,7 +18,7 @@ export class AppComponent {
       let localStorageUser = localStorage.getItem('user');
 
       if (localStorageUser != null) {
-        const user: Users = JSON.parse(localStorageUser);
+        const user: User = JSON.parse(localStorageUser);
         this.userService.login();
         this.userService.setCurrentUser(user);
       }

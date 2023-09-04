@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Messages } from 'src/app/Model/messages';
-import { Users } from 'src/app/Model/users';
+import { Message } from 'src/app/Model/message';
+import { User } from 'src/app/Model/user';
 import { MessageService } from 'src/app/Service/message.service';
 import { UserService } from 'src/app/Service/user.service';
 
@@ -10,7 +10,7 @@ import { UserService } from 'src/app/Service/user.service';
   styleUrls: ['./message.component.css'],
 })
 export class MessageComponent {
-  @Input() msg: Messages = {
+  @Input() msg: Message = {
     messageId: '',
     messageContent: '',
     messageDate: new Date(),
@@ -35,7 +35,7 @@ export class MessageComponent {
     } 
   };
 
-  currentUser!: Users;
+  currentUser!: User;
   displayForm: boolean = false;
 
   constructor(private ms: MessageService, private us: UserService) {

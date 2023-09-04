@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Users } from 'src/app/Model/users';
+import { User } from 'src/app/Model/user';
 import { UserService } from 'src/app/Service/user.service';
 
 @Component({
@@ -27,7 +27,7 @@ export class LoginComponent {
 
   onSubmit(event: Event) {
     if (this.loginForm.valid) {
-      const formValue: Users = this.loginForm.value;
+      const formValue: User = this.loginForm.value;
       
       this.userSubscription = this.userService.getUsers().subscribe(users => {
         const user = users.find(user => user.userMail === formValue.userMail && user.password === formValue.password);

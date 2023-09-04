@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Channels } from 'src/app/Model/channels';
-import { Messages } from 'src/app/Model/messages';
-import { Users } from 'src/app/Model/users';
+import { Channel } from 'src/app/Model/channel';
+import { Message } from 'src/app/Model/message';
+import { User } from 'src/app/Model/user';
 import { ChannelService } from 'src/app/Service/channel.service';
 import { MessageService } from 'src/app/Service/message.service';
 import { UserService } from 'src/app/Service/user.service';
@@ -13,7 +13,7 @@ import { UserService } from 'src/app/Service/user.service';
   styleUrls: ['./create-message.component.css'],
 })
 export class CreateMessageComponent {
-  message: Messages = {
+  message: Message = {
     messageId: '',
     messageContent: '',
     messageDate: new Date(),
@@ -38,14 +38,14 @@ export class CreateMessageComponent {
     },
   };
 
-  canalActuel!: Channels;
-  currentUser: Users | null;
+  canalActuel!: Channel;
+  currentUser: User | null;
 
   constructor(
     private ms: MessageService,
-    private ar: ActivatedRoute,
     private cs: ChannelService,
     private us: UserService,
+    private ar: ActivatedRoute,
     private route: Router
   ) {
     // récupérer le name qui est dans l'URL pour afficher le channel correspondant

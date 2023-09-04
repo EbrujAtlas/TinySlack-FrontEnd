@@ -7,8 +7,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Channels } from 'src/app/Model/channels';
-import { Users } from 'src/app/Model/users';
+import { Channel } from 'src/app/Model/channel';
+import { User } from 'src/app/Model/user';
 import { ChannelService } from 'src/app/Service/channel.service';
 import { UserService } from 'src/app/Service/user.service';
 
@@ -20,8 +20,8 @@ import { UserService } from 'src/app/Service/user.service';
 export class ChangeChannelComponent {
   channelModificationForm: FormGroup;
 
-  @Input() actualChannel!: Channels;
-  currentUser: Users | null;
+  @Input() actualChannel!: Channel;
+  currentUser: User | null;
 
   constructor(
     private fb: FormBuilder,

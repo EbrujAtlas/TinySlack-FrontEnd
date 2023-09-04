@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { Channels } from 'src/app/Model/channels';
-import { Messages } from 'src/app/Model/messages';
-import { Users } from 'src/app/Model/users';
+import { Router } from '@angular/router';
+import { Channel } from 'src/app/Model/channel';
+import { Message } from 'src/app/Model/message';
+import { User } from 'src/app/Model/user';
 import { ChannelService } from 'src/app/Service/channel.service';
 import { MessageService } from 'src/app/Service/message.service';
 import { UserService } from 'src/app/Service/user.service';
@@ -12,17 +12,16 @@ import { UserService } from 'src/app/Service/user.service';
   templateUrl: './channel.component.html',
   styleUrls: ['./channel.component.css'],
 })
+
 export class ChannelComponent {
-  @Input() canal!: Channels;
-  currentUser!: Users;
-  messagesFromChannel: Messages[] = [];
+  @Input() canal!: Channel;
+  currentUser!: User;
+  messagesFromChannel: Message[] = [];
   displayForm: boolean = false;
 
   constructor(
-    private ar: ActivatedRoute,
     private cs: ChannelService,
     private ms: MessageService,
-    private activeRoute: ActivatedRoute,
     private us: UserService,
     private route: Router
   ) {
@@ -33,16 +32,20 @@ export class ChannelComponent {
   ngOnInit(): void {
     // récupérer les messages liés à ce canal
     this.ms.getMessagesFromChannel(this.canal).subscribe((messagesList) => {
-      console.log(messagesList);
       this.messagesFromChannel = messagesList;
     });
   }
 
+  // au clic, change l'affiche du formulaire
   onDisplayForm() {
-    this.displayForm = true;
-    console.log(this.displayForm);
+    if ((this.displayForm = false)) {
+      this.displayForm = true;
+    } else {
+      this.displayForm = false;
+    }
   }
 
+  // supprimer le canal
   delete() {
     this.cs.deleteChannel(this.canal).subscribe((response) => {
       console.log(response);

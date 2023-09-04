@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Messages } from '../Model/messages';
-import { Channels } from '../Model/channels';
+import { Message } from '../Model/message';
+import { Channel } from '../Model/channel';
 import { Observable } from 'rxjs';
-import { Users } from '../Model/users';
+import { User } from '../Model/user';
 
 @Injectable({
   providedIn: 'root',
@@ -20,17 +20,20 @@ export class MessageService {
 
   constructor(private http: HttpClient) {}
 
+  // récupérer tous les messages en BDD
   getMessages() {
     return this.http.get(this.url + 'messages');
   }
 
-  getMessagesFromChannel(channel: Channels): Observable<Messages[] | any> {
+  // récupérer tous les messages d'un canal
+  getMessagesFromChannel(channel: Channel): Observable<Message[] | any> {
     return this.http.get(
       this.url + 'channels/' + channel.channelName + '/messages'
     );
   }
 
-  postMessage(messageContent: string, user: Users, channel: Channels) {
+  // ajouter un nouveau message en BDD
+  postMessage(messageContent: string, user: User, channel: Channel) {
     const body = {
       messageContent: messageContent,
       user: user,
@@ -39,7 +42,8 @@ export class MessageService {
     return this.http.post(this.url + 'messages', body);
   }
 
-  patchMessage(message: Messages) {
+  // modifier un message existant en BDD
+  patchMessage(message: Message) {
     const body = {
       messageId: message.messageId,
       messageContent: message.messageContent,
@@ -50,7 +54,8 @@ export class MessageService {
     return this.http.patch(this.url + 'messages/' + message.messageId, body);
   }
 
-  deleteMessage(message: Messages) {
+  // supprimer un message existant en BDD
+  deleteMessage(message: Message) {
     return this.http.delete(this.url + 'messages/' + message.messageId);
   }
 }

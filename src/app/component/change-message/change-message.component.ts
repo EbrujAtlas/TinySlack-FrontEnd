@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Messages } from 'src/app/Model/messages';
-import { Users } from 'src/app/Model/users';
+import { Message } from 'src/app/Model/message';
+import { User } from 'src/app/Model/user';
 import { MessageService } from 'src/app/Service/message.service';
 import { UserService } from 'src/app/Service/user.service';
 
@@ -12,10 +12,10 @@ import { UserService } from 'src/app/Service/user.service';
   styleUrls: ['./change-message.component.css'],
 })
 export class ChangeMessageComponent {
-  @Input() actualMessage!: Messages;
+  @Input() actualMessage!: Message;
 
   messageModificationForm: FormGroup;
-  currentUser: Users | null;
+  currentUser: User | null;
 
   constructor(
     private fb: FormBuilder,

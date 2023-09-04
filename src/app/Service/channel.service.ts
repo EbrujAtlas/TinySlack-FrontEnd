@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Channels } from '../Model/channels';
-import { Users } from '../Model/users';
+import { Channel } from '../Model/channel';
+import { User } from '../Model/user';
 
 @Injectable({
   providedIn: 'root',
@@ -29,7 +29,7 @@ export class ChannelService {
   }
 
   // ajouter un nouveau canal en BDD
-  postChannel(channel: Channels, user: Users) {
+  postChannel(channel: Channel, user: User) {
     const body = {
       channelName: channel.channelName,
       channelDescription: channel.channelDescription,
@@ -40,7 +40,7 @@ export class ChannelService {
   }
 
   // modifier un canal existant en BDD
-  patchChannel(channel: Channels) {
+  patchChannel(channel: Channel) {
     const body = {
       channelName: channel.channelName,
       channelDescription: channel.channelDescription,
@@ -49,7 +49,8 @@ export class ChannelService {
     return this.http.patch(this.url + 'channels/' + channel.channelName, body);
   }
 
-  deleteChannel(channel: Channels) {
+  // supprimer un canal existant en BDD
+  deleteChannel(channel: Channel) {
     return this.http.delete(this.url + 'channels/' + channel.channelName);
   }
 }
