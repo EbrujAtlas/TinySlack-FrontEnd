@@ -5,6 +5,7 @@
     name="messageContent"
     formControlName="messageContent"
     placeholder="Ecrivez votre message"
+    class="input is-small is-rounded"
   />
   <div
     *ngIf="messageModificationForm.get('messageContent')?.hasError('required')"

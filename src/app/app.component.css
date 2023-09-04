@@ -78,9 +78,9 @@ section {
 }
 
 .deconnexion {
-  background-color: aliceblue;
+  background-color: rgb(240, 248, 255);
   color: rgb(25, 25, 112);
   border: none;
-  border-radius: 10px;
+  border-radius: 20px;
   box-shadow: 5px 5px 5px rgb(25, 25, 112, 0.5);
 }

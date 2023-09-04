@@ -4,3 +4,8 @@
   border-radius: 10px;
   margin-bottom: 10px;
 }
+.message {
+  background-color: lightskyblue;
+  height: 40px;
+  padding-top: 7px;
+}
