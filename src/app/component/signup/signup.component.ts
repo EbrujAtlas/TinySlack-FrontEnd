@@ -7,12 +7,13 @@ import {
   AbstractControl,
   FormControl,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/Model/user';
 import { UserService } from 'src/app/Service/user.service';
 
 //Validator perso pour check si password = passwordConfirm
 function passwordsMatchValidator(
-  control: AbstractControl
+  control: AbstractControl,
 ): { [key: string]: boolean } | null {
   const password = control.get('password');
   const passwordConfirm = control.get('passwordConfirm');
@@ -32,7 +33,11 @@ function passwordsMatchValidator(
 export class SignupComponent {
   signupForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private userService: UserService) {
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+    private route: Router,
+  ) {
     this.signupForm = this.fb.group(
       {
         userName: ['', [Validators.required, Validators.maxLength(20)]],
@@ -40,7 +45,7 @@ export class SignupComponent {
         password: ['', [Validators.required, Validators.minLength(5)]],
         passwordConfirm: ['', [Validators.required, Validators.minLength(5)]],
       },
-      { validator: passwordsMatchValidator }
+      { validator: passwordsMatchValidator },
     );
 
     this.userService.loadUsers();
@@ -60,7 +65,8 @@ export class SignupComponent {
       } else {
         this.userService.addUser(formValue).subscribe(
           (response: User) => {
-            alert('Vous êtes bien inscrit allez vous connecter');
+            this.route.navigate(['/login']);
+
             console.log('Nouvel utilisateur inscrit :', response);
           },
           (error: HttpErrorResponse) => {
