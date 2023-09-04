@@ -10,12 +10,17 @@ h1 {
   text-transform: uppercase;
   font-weight: bold;
 }
-.title,
+.title {
+  width: 400px;
+  margin-left: 2%;
+  margin-bottom: 0;
+}
+
 .footer-a {
   text-decoration: none;
   color: midnightblue;
 }
-.title:visited,
+
 .about:visited,
 .footer-a:visited {
   color: midnightblue;
@@ -40,6 +45,7 @@ footer {
   position: fixed;
   bottom: 0;
   text-align: center;
+  padding: 0;
   height: 10%;
   margin-top: 2%;
   display: flex;
