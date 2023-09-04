@@ -22,20 +22,19 @@ import { ChannelViewComponent } from './component/channel-view/channel-view.comp
 @NgModule({
   declarations: [
     AppComponent,
-    ChannelComponent,
-    ListChannelComponent,
-    CreateChannelComponent,
-    MessageComponent,
-    CreateMessageComponent,
     LoginComponent,
     SignupComponent,
     ProfileComponent,
     Error404Component,
     AboutComponent,
-
     ChangeChannelComponent,
     ChangeMessageComponent,
     ChannelViewComponent,
+    ChannelComponent,
+    ListChannelComponent,
+    CreateChannelComponent,
+    MessageComponent,
+    CreateMessageComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,8 +42,8 @@ import { ChannelViewComponent } from './component/channel-view/channel-view.comp
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
-
   providers: [],
   bootstrap: [AppComponent],
 })

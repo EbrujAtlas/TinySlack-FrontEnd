@@ -60,6 +60,7 @@ export class SignupComponent {
       } else {
         this.userService.addUser(formValue).subscribe(
           (response: User) => {
+            alert('Vous êtes bien inscrit allez vous connecter');
             console.log('Nouvel utilisateur inscrit :', response);
           },
           (error: HttpErrorResponse) => {

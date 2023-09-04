@@ -52,7 +52,7 @@ export class UserService {
     );
   }
 
-  // Authenfication
+  // Authenfication (gère les affichages en fonction du statut)
   login() {
     this.isLoggedIn = true;
   }

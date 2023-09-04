@@ -1,35 +1,12 @@
-<div *ngIf="currentUser">
-  <h1>Bonjour, {{ currentUser.userName }}</h1>
-  <button routerLink="/newchannel">Créer un canal</button>
-  <button routerLink="/newchannel">Créer un canal</button>
-</div>
-<br />
-
-<h2>Voici vos informations personnelles:</h2>
-<div *ngIf="currentUser">
+<div *ngIf="currentUser" class="center">
+  <h2>Bonjour, {{ currentUser.userName }}</h2>
+  <h3>Voici vos informations personnelles:</h3>
   <div *ngIf="!isInputVisible">
     <p>Votre nom: {{ currentUser.userName }}</p>
     <p>Votre adresse mail: {{ currentUser.userMail }}</p>
     <p>Votre mot de passe: {{ currentUser.password }}</p>
     <button (click)="visibilityInput()">Modifier votre profil</button>
   </div>
-
-  <input
-    class="Visible"
-    type="checkbox"
-    name="delete"
-    id="delete"
-    (change)="changeEvent($event)"
-  />
-  <label for="delete"
-    >Souhaitez-vous supprimer votre profil ? Cochez si oui</label
-  >
-  <br />
-  <button (click)="deleteUser()" [disabled]="toggleBool">
-    Supprimer mon profil
-  </button>
-  <br />
-
   <form
     *ngIf="isInputVisible"
     [formGroup]="updateForm"
@@ -41,7 +18,9 @@
       <div *ngIf="updateForm.get('userName')?.hasError('maxlength')">
         <p>
           Votre nom doit faire moins de
-          {{ updateForm.get('userName')?.errors?.['maxlength']?.requiredLength }}
+          {{
+            updateForm.get("userName")?.errors?.["maxlength"]?.requiredLength
+          }}
           caractères.
         </p>
       </div>
@@ -61,7 +40,9 @@
       <div *ngIf="updateForm.get('password')?.hasError('minlength')">
         <p>
           Mot de passe doit avoir au moins
-          {{ updateForm.get('password')?.errors?.['minlength']?.requiredLength }}
+          {{
+            updateForm.get("password")?.errors?.["minlength"]?.requiredLength
+          }}
           caractères.
         </p>
       </div>
@@ -72,6 +53,24 @@
     </button>
     <br />
   </form>
+
+  <div *ngIf="currentUser" id="checkbox-delete" class="center">
+    <input
+      class="Visible"
+      type="checkbox"
+      name="delete"
+      id="delete"
+      (change)="changeEvent($event)"
+    />
+    <label for="delete"
+      >Souhaitez-vous supprimer votre profil ? Cochez si oui</label
+    >
+    <br />
+    <button (click)="deleteUser()" [disabled]="toggleBool">
+      Supprimer mon profil
+    </button>
+    <br />
+  </div>
 </div>
 
 <div *ngIf="!currentUser">

@@ -1,26 +1,35 @@
-<header>
-  <h1>TinySlack</h1>
-  <nav>
-    <a *ngIf="userService.isLoggedInUser()" routerLink="/profile"
-      ><img class="icon-profile" src="assets/images/icon-profile.png"
-    /></a>
-    <a *ngIf="!userService.isLoggedInUser()" routerLink="/login"
-      ><img class="icon-profile" src="assets/images/icon-profile.png"
-    /></a>
-  </nav>
-</header>
+<div class="container">
+  <header class="header">
+    <a routerLink="/channel/channel3" class="title">
+      <h1>TinySlack</h1>
+    </a>
+    <nav>
+      <a *ngIf="userService.isLoggedInUser()" routerLink="/profile"
+        ><img class="icon-profile" src="assets/images/icon-profile.png"
+      /></a>
+      <a *ngIf="!userService.isLoggedInUser()" routerLink="/login"
+        ><img class="icon-profile" src="assets/images/icon-profile.png"
+      /></a>
+    </nav>
+  </header>
 
-<router-outlet></router-outlet>
+  <div class="channel-list"><app-list-channel></app-list-channel></div>
 
-<footer>
-  <button
-    *ngIf="userService.isLoggedInUser()"
-    routerLink="/login"
-    class="form-button"
-    type="submit"
-    (click)="logout()"
-  >
-    Déconnexion
-  </button>
-  <a routerLink="/about">A propos</a>
-</footer>
+  <div class="content"><router-outlet></router-outlet></div>
+
+  <footer class="footer">
+    <a routerLink="/about" class="about">A propos</a>
+    <a routerLink="/channel/channel3" class="footer-a">
+      <p class="footer-logo">TinySlack</p>
+    </a>
+    <button
+      *ngIf="userService.isLoggedInUser()"
+      routerLink="/login"
+      class="form-button, deconnexion"
+      type="submit"
+      (click)="logout()"
+    >
+      Déconnexion
+    </button>
+  </footer>
+</div>

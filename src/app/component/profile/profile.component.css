@@ -1,2 +1,12 @@
-
-
+#checkbox-delete {
+  margin-top: 15%;
+}
+#checkbox-delete button {
+  margin-top: 5%;
+}
+#checkbox-delete button:disabled {
+  background-color: rgba(25, 25, 112, 0.5);
+}
+#checkbox-delete label {
+  margin-left: 2%;
+}

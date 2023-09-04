@@ -1,17 +1,14 @@
 <h3>{{ canal.channelName }}</h3>
-<div>{{ canal.channelDescription }}</div>
+<p>{{ canal.channelDescription }}</p>
 <p>Créateur: {{ canal.user.userName }}</p>
 <div *ngIf="currentUser.userId == canal.user.userId">
   <button (click)="onDisplayForm()">Modifier</button>
-  <ng-template *ngIf="displayForm"
-    ></ng-template>
-    <button (click)="delete()">Supprimer</button>
+  <ng-template *ngIf="displayForm"></ng-template>
+  <app-change-channel [actualChannel]="canal"></app-change-channel>
+  <button (click)="delete()">Supprimer</button>
 </div>
-<app-change-channel [actualChannel]="canal"></app-change-channel
-  >
-
+<div class="scroll"></div>
 <div *ngFor="let message of messagesFromChannel">
   <app-message [msg]="message"></app-message>
 </div>
-
 <app-create-message></app-create-message>

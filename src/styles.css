@@ -1,1 +1,73 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body,
+.container {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: aliceblue;
+  padding: 0;
+  color: midnightblue;
+}
+
+button {
+  background-color: rgb(25, 25, 112);
+  color: rgb(240, 248, 255);
+  border: none;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgb(25, 25, 112, 0.5);
+}
+
+button:hover,
+.title:hover,
+.footer-a:hover {
+  transform: scale(1.05);
+}
+
+.plus-btn {
+  margin-left: 40px;
+}
+
+/*CSS pour l'affichage global*/
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  padding: 0;
+  margin: 0;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "header header header"
+    "channel-list content content"
+    "channel-list content content"
+    "channel-list content content"
+    "footer footer footer";
+}
+.header {
+  grid-area: header;
+}
+.channel-list {
+  grid-area: channel-list;
+  padding-left: 2%;
+}
+.footer {
+  grid-area: footer;
+}
+.content {
+  grid-area: content;
+  text-align: center;
+}
+
+/* Media query pour les écrans de moins de 600px */
+@media screen and (max-width: 426px) {
+  footer {
+    flex-direction: column;
+    align-items: center; /* Vous pouvez ajuster ceci selon vos besoins */
+    height: 15%;
+  }
+}
